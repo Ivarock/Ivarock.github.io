@@ -1,0 +1,56 @@
+# ============================================================
+#  CONFIGURACIÓN DEL BLOG
+#  Cambia estos valores por los tuyos. No necesitas tocar nada
+#  más para personalizar el nombre, descripción o redes.
+# ============================================================
+
+title: "Bitácora de Ivanov"
+tagline: "Experiencias, fotos y tours 360"
+description: >-
+  Blog personal de Ivanov: relatos de viajes y experiencias,
+  fotografías y recorridos virtuales en 360°.
+
+# Tu nombre, como quieres que aparezca en "Acerca de" y en el pie de página
+author: "Ivanov"
+
+# Redes sociales (deja vacío "" el que no uses, o borra la línea)
+email: ""
+instagram_username: ""
+kuula_username: ""
+
+# URL una vez publicado en GitHub Pages, por ejemplo:
+#   url: "https://tuusuario.github.io"
+# Si usas un dominio propio más adelante, cambia esto por tu dominio.
+url: ""
+baseurl: ""
+
+# ------------------------------------------------------------
+# Ajustes técnicos de Jekyll (no hace falta tocarlos)
+# ------------------------------------------------------------
+markdown: kramdown
+permalink: /:year/:month/:day/:title/
+paginate: 6
+paginate_path: "/pagina/:num/"
+
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
+  - vendor

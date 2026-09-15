@@ -1,0 +1,22 @@
+<!--
+  ============================================================
+  GALERÍA DE FOTOS
+  ------------------------------------------------------------
+  Úsala dentro de un post así:
+
+    {% raw %}{% include galeria.html images="foto1.jpg,foto2.jpg,foto3.jpg" folder="2026-09-mi-viaje" %}{% endraw %}
+
+  - "folder": el nombre de la subcarpeta dentro de
+    /assets/images/posts/ donde pusiste las fotos de ese post.
+  - "images": los nombres de archivo separados por comas, en el
+    orden en que quieres que aparezcan.
+  ============================================================
+-->
+<div class="galeria">
+  {% assign lista_fotos = include.images | split: "," %}
+  {% for foto in lista_fotos %}
+  <a class="galeria__item" href="{{ '/assets/images/posts/' | append: include.folder | append: '/' | append: foto | strip | relative_url }}" target="_blank" rel="noopener">
+    <img src="{{ '/assets/images/posts/' | append: include.folder | append: '/' | append: foto | strip | relative_url }}" alt="" loading="lazy">
+  </a>
+  {% endfor %}
+</div>

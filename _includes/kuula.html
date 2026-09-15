@@ -1,0 +1,33 @@
+<!--
+  ============================================================
+  VISOR 360 DE KUULA
+  ------------------------------------------------------------
+  Úsalo dentro de cualquier post así (en el archivo .md del post):
+
+    {% raw %}{% include kuula.html id="TU-ID-DE-KUULA" %}{% endraw %}
+
+  El "id" es el código que aparece en la URL para compartir de
+  Kuula, por ejemplo si tu enlace es:
+    https://kuula.co/share/collection/ABC123
+  el id es:  ABC123
+
+  Parámetros opcionales:
+    caption: "Texto debajo del visor"
+    height:  "480px"  (alto del visor, por defecto 480px)
+  ============================================================
+-->
+<figure class="kuula-embed">
+  <div class="kuula-embed__frame" style="--kuula-height: {{ include.height | default: '480px' }};">
+    <iframe
+      src="https://kuula.co/share/{{ include.id }}?logo=1&info=1&fs=1&vr=0&sd=1&thumbs=1"
+      allow="xr-spatial-tracking; gyroscope; accelerometer"
+      allowfullscreen
+      scrolling="no"
+      loading="lazy"
+      title="{{ include.caption | default: 'Foto 360' }}">
+    </iframe>
+  </div>
+  {% if include.caption %}
+  <figcaption>{{ include.caption }}</figcaption>
+  {% endif %}
+</figure>
