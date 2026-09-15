@@ -10,6 +10,8 @@
   --color-ink-soft: #5c5347;
   --color-accent: #c4622d;
   --color-accent-dark: #9c4a1f;
+  --color-fotografia: #3d6e8f;
+  --color-medicina: #3d7a5a;
   --color-line: #e3d8c7;
   --radius: 14px;
   --shadow: 0 8px 24px rgba(43, 36, 29, 0.08);
@@ -25,6 +27,8 @@
     --color-ink-soft: #c9bfae;
     --color-accent: #e08a52;
     --color-accent-dark: #f0a06b;
+    --color-fotografia: #7fb2d6;
+    --color-medicina: #7fcda0;
     --color-line: #3a332a;
     --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
   }
@@ -101,6 +105,55 @@ img { max-width: 100%; display: block; border-radius: var(--radius); }
   font-size: 1.05rem;
   max-width: 56ch;
   margin: 0;
+}
+
+/* ---------- Tarjetas de sección (inicio) ---------- */
+.section-nav {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin: 8px 0 40px;
+}
+
+.section-nav__item {
+  display: block;
+  background: var(--color-bg-alt);
+  border-radius: var(--radius);
+  padding: 18px;
+  box-shadow: var(--shadow);
+  border-top: 3px solid var(--color-accent);
+}
+.section-nav__item:hover { text-decoration: none; filter: brightness(1.03); }
+.section-nav__item--fotografia { border-top-color: var(--color-fotografia); }
+.section-nav__item--medicina { border-top-color: var(--color-medicina); }
+
+.section-nav__label {
+  display: block;
+  font-family: var(--font-serif);
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--color-ink);
+  margin-bottom: 4px;
+}
+
+.section-nav__desc {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--color-ink-soft);
+}
+
+@media (max-width: 640px) {
+  .section-nav { grid-template-columns: 1fr; }
+}
+
+/* ---------- Etiqueta de categoría en las tarjetas de post ---------- */
+.post-card__category { font-weight: 600; color: var(--color-accent-dark); }
+.post-card__category--fotografia { color: var(--color-fotografia); }
+.post-card__category--medicina { color: var(--color-medicina); }
+
+.empty-section {
+  color: var(--color-ink-soft);
+  padding: 24px 0 56px;
 }
 
 /* ---------- Post list / cards ---------- */

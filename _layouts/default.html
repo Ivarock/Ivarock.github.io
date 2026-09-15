@@ -26,8 +26,10 @@
       </a>
       <nav class="site-nav">
         <a href="{{ '/' | relative_url }}">Inicio</a>
+        <a href="{{ '/blog/' | relative_url }}">Blog</a>
+        <a href="{{ '/fotografia/' | relative_url }}">Fotografía</a>
+        <a href="{{ '/medicina/' | relative_url }}">Medicina</a>
         <a href="{{ '/acerca-de/' | relative_url }}">Acerca de</a>
-        <a href="{{ '/feed.xml' | relative_url }}">RSS</a>
       </nav>
     </div>
   </header>
@@ -38,7 +40,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>© {{ site.time | date: '%Y' }} {{ site.author }}. Hecho con Jekyll + GitHub Pages.</p>
+      <p>© {{ site.time | date: '%Y' }} {{ site.author }}. Hecho con Jekyll + GitHub Pages. · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
     </div>
   </footer>
 

@@ -1,0 +1,7 @@
+# Nombres visibles de cada sección del blog.
+# La clave (a la izquierda) es el valor que escribes en "category:"
+# dentro de cada post. El valor (a la derecha) es lo que se muestra
+# en pantalla. Si agregas una sección nueva, agrégala aquí también.
+blog: "Blog de Ivanov"
+fotografia: "Fotografía"
+medicina: "Medicina"

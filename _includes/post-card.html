@@ -1,0 +1,25 @@
+<!--
+  Tarjeta reutilizable para mostrar un post en una lista (inicio o
+  cualquiera de las secciones). Úsala así:
+
+    {% raw %}{% include post-card.html post=post %}{% endraw %}
+
+  donde "post" es el objeto de post que viene de un {% raw %}{% for %}{% endraw %}.
+-->
+{% assign post = include.post %}
+<article class="post-card">
+  {% if post.image %}
+  <a class="post-card__thumb" href="{{ post.url | relative_url }}">
+    <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
+  </a>
+  {% endif %}
+  <div class="post-card__body">
+    <p class="post-card__meta">
+      {{ post.date | date: "%-d de %B, %Y" }}{% if post.location %} · {{ post.location }}{% endif %}
+      {% if post.category %} · <span class="post-card__category post-card__category--{{ post.category }}">{{ site.data.categorias[post.category] | default: post.category }}</span>{% endif %}
+    </p>
+    <h2 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
+    <p class="post-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 32 }}</p>
+    <a class="post-card__link" href="{{ post.url | relative_url }}">Leer más →</a>
+  </div>
+</article>

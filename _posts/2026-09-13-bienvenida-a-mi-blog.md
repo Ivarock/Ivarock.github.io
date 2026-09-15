@@ -2,6 +2,7 @@
 title: "Bienvenido a mi nueva bitácora"
 image: /assets/images/site/bienvenida.jpg
 location: ""
+category: blog
 tags: [bienvenida]
 ---
 

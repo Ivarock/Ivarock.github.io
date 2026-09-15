@@ -2,6 +2,7 @@
 title: "Ejemplo: cómo se ve un post con galería de fotos"
 image: /assets/images/posts/ejemplo-galeria/portada.jpg
 location: "Guayaquil, Ecuador"
+category: fotografia
 tags: [ejemplo, fotos]
 ---
 

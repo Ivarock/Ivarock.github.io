@@ -9,21 +9,24 @@ layout: default
   {% endif %}
 </section>
 
+<nav class="section-nav">
+  <a class="section-nav__item section-nav__item--blog" href="{{ '/blog/' | relative_url }}">
+    <span class="section-nav__label">Blog de Ivanov</span>
+    <span class="section-nav__desc">Relatos y experiencias</span>
+  </a>
+  <a class="section-nav__item section-nav__item--fotografia" href="{{ '/fotografia/' | relative_url }}">
+    <span class="section-nav__label">Fotografía</span>
+    <span class="section-nav__desc">Fotos y recorridos 360</span>
+  </a>
+  <a class="section-nav__item section-nav__item--medicina" href="{{ '/medicina/' | relative_url }}">
+    <span class="section-nav__label">Medicina</span>
+    <span class="section-nav__desc">Apuntes y contenido médico</span>
+  </a>
+</nav>
+
 <section class="post-list">
   {% for post in paginator.posts %}
-  <article class="post-card">
-    {% if post.image %}
-    <a class="post-card__thumb" href="{{ post.url | relative_url }}">
-      <img src="{{ post.image | relative_url }}" alt="{{ post.title }}" loading="lazy">
-    </a>
-    {% endif %}
-    <div class="post-card__body">
-      <p class="post-card__meta">{{ post.date | date: "%-d de %B, %Y" }}{% if post.location %} · {{ post.location }}{% endif %}</p>
-      <h2 class="post-card__title"><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-      <p class="post-card__excerpt">{{ post.excerpt | strip_html | truncatewords: 32 }}</p>
-      <a class="post-card__link" href="{{ post.url | relative_url }}">Leer más →</a>
-    </div>
-  </article>
+    {% include post-card.html post=post %}
   {% endfor %}
 </section>
 

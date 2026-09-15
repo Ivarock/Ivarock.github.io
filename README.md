@@ -42,6 +42,7 @@ Cada vez que subas cambios (nuevos posts, fotos, etc.), GitHub reconstruye el si
    ---
    title: "Mi viaje a Montañita"
    location: "Montañita, Ecuador"
+   category: blog
    tags: [viajes, playa]
    image: /assets/images/posts/montanita/portada.jpg
    ---
@@ -54,6 +55,18 @@ Cada vez que subas cambios (nuevos posts, fotos, etc.), GitHub reconstruye el si
    - `title`, `location`, `tags` e `image` son opcionales, pero le dan mejor forma a la entrada. Bórralos si no los necesitas.
    - `location` es el lugar (se muestra con un 📍).
    - `image` es la foto de portada que aparece en la lista de entradas.
+   - `category` decide en qué sección aparece la entrada (además de en Inicio). Usa uno de estos tres valores: `blog`, `fotografia` o `medicina`.
+
+### Las secciones (Blog, Fotografía, Medicina)
+
+El blog está organizado en tres secciones, cada una con su propia página (`/blog/`, `/fotografia/`, `/medicina/`) que muestra solo las entradas de esa categoría. Inicio siempre muestra todas las entradas juntas, más nuevas primero.
+
+Para agregar una sección nueva (por ejemplo "recetas"):
+
+1. Agrega la línea `recetas: "Recetas"` en `_data/categorias.yml` (ese nombre es el que se muestra en pantalla).
+2. Crea una carpeta `recetas/` con un archivo `index.md` dentro, copiando el mismo formato que `blog/index.md`, `fotografia/index.md` o `medicina/index.md` (cambiando `title`, `category` y `permalink`).
+3. Agrega el enlace correspondiente en el menú de `_layouts/default.html`.
+4. Usa `category: recetas` en los posts que quieras que aparezcan ahí.
 
 4. Sube el archivo (y sus fotos, ver abajo) a GitHub. Listo.
 

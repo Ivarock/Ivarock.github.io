@@ -1,0 +1,21 @@
+---
+layout: default
+---
+<section class="hero">
+  <h1 class="hero__title">{{ page.title }}</h1>
+  {% if page.description %}
+  <p class="hero__desc">{{ page.description }}</p>
+  {% endif %}
+</section>
+
+{% assign section_posts = site.posts | where: "category", page.category %}
+
+<section class="post-list">
+  {% for post in section_posts %}
+    {% include post-card.html post=post %}
+  {% endfor %}
+</section>
+
+{% if section_posts.size == 0 %}
+<p class="empty-section">Todavía no hay entradas en esta sección. ¡Vuelve pronto!</p>
+{% endif %}

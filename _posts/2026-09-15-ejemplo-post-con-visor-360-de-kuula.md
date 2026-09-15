@@ -2,6 +2,7 @@
 title: "Ejemplo: cómo incrustar un visor 360 de Kuula"
 image: /assets/images/posts/ejemplo-360/portada.jpg
 location: ""
+category: fotografia
 tags: [ejemplo, 360, kuula]
 ---
 
