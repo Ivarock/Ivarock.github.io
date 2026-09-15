@@ -21,7 +21,7 @@ kuula_username: ""
 # URL una vez publicado en GitHub Pages, por ejemplo:
 #   url: "https://tuusuario.github.io"
 # Si usas un dominio propio más adelante, cambia esto por tu dominio.
-url: ""
+url: "https://ivarock.github.io"
 baseurl: ""
 
 # ------------------------------------------------------------
