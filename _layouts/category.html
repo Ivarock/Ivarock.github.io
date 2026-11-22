@@ -8,6 +8,8 @@ layout: default
   {% endif %}
 </section>
 
+{% if page.galeria_360 %}{% include galeria-360.html %}{% endif %}
+
 {% assign section_posts = site.posts | where: "category", page.category %}
 
 <section class="post-list">
