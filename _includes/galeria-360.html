@@ -1,0 +1,76 @@
+<!-- Galería de fotos 360° (datos en _data/kuula.yml). Uso: {% raw %}{% include galeria-360.html %}{% endraw %} -->
+<style>
+.g360{margin:6px 0 44px}
+.g360__head{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.g360__head h2{margin:0;font-size:1.7rem;color:#fff;text-shadow:0 2px 0 rgba(10,90,150,.35),0 6px 16px rgba(10,90,150,.35)}
+.g360__count{font:700 .8rem var(--font-sans);color:var(--aqua-deep);background:rgba(255,255,255,.85);border:1px solid rgba(23,162,230,.4);border-radius:999px;padding:4px 12px}
+.g360__filters{display:flex;gap:8px;flex-wrap:wrap;margin:0 0 18px}
+.g360__f{font:700 .88rem var(--font-sans);color:var(--ink);cursor:pointer;border-radius:999px;padding:7px 15px;border:1px solid rgba(23,162,230,.45);background:linear-gradient(180deg,#fff 0%,#e4f6ff 50%,#cdeeff 51%,#eaf8ff 100%);box-shadow:0 2px 6px rgba(10,90,150,.15),inset 0 1px 0 #fff}
+.g360__f[aria-pressed="true"]{color:#fff;border-color:#0b86c4;background:linear-gradient(180deg,#8fe0ff 0%,#36b8f2 48%,#129ddf 52%,#3cc0f5 100%);text-shadow:0 1px 1px rgba(0,70,120,.5)}
+.g360__grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:16px}
+.g360__item{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.7) 50%,rgba(232,247,255,.66) 51%,rgba(245,252,255,.85) 100%);border:1px solid #fff;box-shadow:var(--shadow);transition:transform .25s,box-shadow .25s}
+.g360__item:hover,.g360__item:focus-visible{transform:translateY(-5px);box-shadow:0 18px 36px rgba(10,90,150,.3),0 0 0 3px rgba(23,162,230,.35)}
+.g360__thumb{position:relative;aspect-ratio:1;margin:8px 8px 0;border-radius:50%;overflow:hidden;background:#cdeeff;box-shadow:0 6px 16px rgba(10,90,150,.3),inset 0 0 0 3px rgba(255,255,255,.8)}
+.g360__thumb img{width:100%;height:100%;object-fit:cover;border-radius:0;margin:0;transition:transform 6s linear}
+.g360__item:hover .g360__thumb img{transform:scale(1.15) rotate(8deg)}
+.g360__thumb::after{content:"";position:absolute;inset:0;border-radius:50%;background:radial-gradient(circle at 30% 25%,rgba(255,255,255,.75) 0 8%,rgba(255,255,255,.15) 18%,transparent 45%)}
+.g360__badge{position:absolute;z-index:2;right:10%;bottom:8%;font:800 .7rem var(--font-head);color:#fff;padding:3px 8px;border-radius:999px;background:linear-gradient(180deg,#b8f08f 0%,#6ccc3f 48%,#4fb825 52%,#79d64c 100%);border:1px solid #2f8f22;box-shadow:0 2px 6px rgba(47,143,34,.4)}
+.g360__txt{padding:10px 12px 14px;text-align:center}
+.g360__txt b{display:block;font:800 .95rem/1.25 var(--font-head);color:var(--ink)}
+.g360__txt span{display:block;font-size:.8rem;color:var(--ink-soft);margin-top:3px}
+.g360__modal{position:fixed;inset:0;z-index:100;display:none;align-items:center;justify-content:center;padding:16px;background:rgba(20,110,180,.45);backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px)}
+.g360__modal.open{display:flex}
+.g360__box{width:min(1100px,100%);border-radius:22px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.95),rgba(235,248,255,.92));border:1px solid #fff;box-shadow:0 30px 60px rgba(10,60,110,.45)}
+.g360__bar{display:flex;align-items:center;gap:10px;padding:10px 14px}
+.g360__bar h3{flex:1;margin:0;font-size:1.05rem;color:var(--aqua-deep);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.g360__bar a{font:700 .82rem var(--font-sans)}
+.g360__x{all:unset;cursor:pointer;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:800;border:1px solid #b8452f;background:linear-gradient(180deg,#ffb3a0 0%,#f06a4c 48%,#e04e2f 52%,#f5795c 100%);box-shadow:0 2px 6px rgba(180,60,30,.35)}
+.g360__frame{position:relative;height:min(70vh,620px);background:#000}
+.g360__frame iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+@media (max-width:520px){.g360__grid{grid-template-columns:repeat(2,1fr);gap:12px}.g360__frame{height:62vh}}
+</style>
+
+<section class="g360" id="fotos-360">
+  <div class="g360__head">
+    <h2>Fotos 360°</h2>
+    <span class="g360__count">{{ site.data.kuula | size }} recorridos · toca una para explorarla</span>
+  </div>
+  <div class="g360__filters" role="group" aria-label="Filtrar fotos">
+    <button class="g360__f" aria-pressed="true" data-g="all">Todas</button>
+    <button class="g360__f" aria-pressed="false" data-g="viajes">Viajes y paisajes</button>
+    <button class="g360__f" aria-pressed="false" data-g="familia">Familia y deporte</button>
+    <button class="g360__f" aria-pressed="false" data-g="ciudad">Guayaquil y ciudad</button>
+    <button class="g360__f" aria-pressed="false" data-g="medicina">Medicina y posgrado</button>
+  </div>
+  <div class="g360__grid">
+    {% for f in site.data.kuula %}
+    <button class="g360__item" data-g="{{ f.grupo }}" data-id="{{ f.id }}" data-t="{{ f.titulo | escape }}">
+      <span class="g360__thumb"><img src="https://files.kuula.io/{{ f.cover }}/01-cover.jpg" alt="{{ f.titulo | escape }}" loading="lazy" width="320" height="320"><span class="g360__badge">360°</span></span>
+      <span class="g360__txt"><b>{{ f.titulo }}</b><span>{{ f.lugar }}{% if f.lugar != "" and f.anio != "" %} · {% endif %}{{ f.anio }}</span></span>
+    </button>
+    {% endfor %}
+  </div>
+</section>
+
+<div class="g360__modal" id="g360modal" role="dialog" aria-modal="true" aria-label="Visor 360">
+  <div class="g360__box">
+    <div class="g360__bar"><h3 id="g360title"></h3><a id="g360link" href="#" target="_blank" rel="noopener">Abrir en Kuula ↗</a><button class="g360__x" id="g360close" aria-label="Cerrar">✕</button></div>
+    <div class="g360__frame" id="g360frame"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var m=document.getElementById('g360modal'),fr=document.getElementById('g360frame'),last=null;
+  function open(b){last=b;var id=b.dataset.id;document.getElementById('g360title').textContent=b.dataset.t;document.getElementById('g360link').href='https://kuula.co/post/'+id;
+    fr.innerHTML='<iframe src="https://kuula.co/share/'+id+'?logo=1&info=0&fs=1&vr=1&autorotate=0.2&thumbs=-1" allow="xr-spatial-tracking; gyroscope; accelerometer; fullscreen" allowfullscreen title="'+b.dataset.t.replace(/"/g,'&quot;')+'"></iframe>';
+    m.classList.add('open');document.body.style.overflow='hidden';document.getElementById('g360close').focus();}
+  function close(){m.classList.remove('open');fr.innerHTML='';document.body.style.overflow='';if(last)last.focus();}
+  document.querySelectorAll('.g360__item').forEach(function(b){b.addEventListener('click',function(){open(b);});});
+  document.getElementById('g360close').addEventListener('click',close);
+  m.addEventListener('click',function(e){if(e.target===m)close();});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&m.classList.contains('open'))close();});
+  var fs=document.querySelectorAll('.g360__f');
+  fs.forEach(function(b){b.addEventListener('click',function(){fs.forEach(function(x){x.setAttribute('aria-pressed',x===b);});var g=b.dataset.g;document.querySelectorAll('.g360__item').forEach(function(i){i.style.display=(g==='all'||i.dataset.g===g)?'':'none';});});});
+})();
+</script>
