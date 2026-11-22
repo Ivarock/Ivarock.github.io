@@ -1,0 +1,42 @@
+---
+layout: default
+title: Buscar
+description: Busca en artículos, presentaciones, manuales, fotos, calculadoras y el blog.
+permalink: /buscar/
+buscable: false
+---
+<section class="x-hero">
+  <span class="pre">Todo el sitio</span>
+  <h1>Buscar</h1>
+  <p>Escribe un fármaco, una técnica o un lugar: busca a la vez en artículos, presentaciones, manuales, fotos 360°, calculadoras y el blog.</p>
+</section>
+<div class="x-card" style="margin-bottom:40px">
+  <input class="gl__search" id="sq" type="search" placeholder="Ej.: propofol, cesárea, Loja, ketamina…" aria-label="Buscar en el sitio" autofocus>
+  <div class="x-chips" id="sfil"></div>
+  <p class="x-note" id="sinfo" aria-live="polite">Cargando el índice…</p>
+  <div id="sres"></div>
+</div>
+<script>
+(function(){
+  var data=[],tipo='Todos',q=document.getElementById('sq'),out=document.getElementById('sres'),info=document.getElementById('sinfo'),fil=document.getElementById('sfil');
+  function norm(s){return (s||'').toString().toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'')}
+  function esc(s){return (s||'').replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
+  function mark(s,terms){s=esc(s);terms.forEach(function(t){if(t.length<2)return;var re=new RegExp('('+t.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+')','gi');s=s.replace(re,'<mark>$1</mark>')});return s}
+  function run(){
+    var raw=q.value.trim(),terms=norm(raw).split(/\s+/).filter(Boolean);
+    try{history.replaceState(null,'',raw?'?q='+encodeURIComponent(raw):location.pathname)}catch(e){}
+    var res=data.filter(function(d){if(tipo!=='Todos'&&d.tipo!==tipo)return false;if(!terms.length)return false;var h=norm(d.t+' '+d.d+' '+d.k+' '+d.tipo);return terms.every(function(t){return h.indexOf(t)>-1})});
+    res.sort(function(a,b){var ta=terms.every(function(t){return norm(a.t).indexOf(t)>-1}),tb=terms.every(function(t){return norm(b.t).indexOf(t)>-1});return tb-ta});
+    info.textContent=!terms.length?'Escribe al menos una palabra.':res.length?res.length+' resultado'+(res.length>1?'s':''):'Sin resultados. Prueba con otra palabra.';
+    var rawTerms=raw.split(/\s+/);
+    out.innerHTML=res.slice(0,60).map(function(d){return '<a class="sr__item" href="'+d.u+'"><b>'+mark(d.t,rawTerms)+'</b><small>'+esc(d.tipo)+'</small>'+(d.d?'<p>'+mark(d.d,rawTerms)+'</p>':'')+'</a>'}).join('');
+  }
+  fetch('{{ "/search.json" | relative_url }}').then(function(r){return r.json()}).then(function(j){
+    data=j;var tipos=['Todos'];j.forEach(function(d){if(tipos.indexOf(d.tipo)<0)tipos.push(d.tipo)});
+    fil.innerHTML=tipos.map(function(t){return '<button class="x-chip" aria-pressed="'+(t==='Todos')+'">'+t+'</button>'}).join('');
+    [].forEach.call(fil.children,function(b){b.onclick=function(){tipo=b.textContent;[].forEach.call(fil.children,function(x){x.setAttribute('aria-pressed',x===b)});run()}});
+    var p=new URLSearchParams(location.search).get('q');if(p)q.value=p;run();
+  }).catch(function(){info.textContent='No se pudo cargar el índice de búsqueda.'});
+  q.addEventListener('input',run);
+})();
+</script>
