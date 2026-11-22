@@ -1,0 +1,29 @@
+<!-- Subsecciones destacadas de Medicina: Presentaciones y Manuales -->
+<style>
+.msec{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:4px 0 40px}
+.msec__card{position:relative;display:flex;gap:16px;align-items:center;padding:18px;border-radius:22px;color:var(--ink);font-weight:400;background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.68) 50%,rgba(228,246,255,.62) 51%,rgba(245,252,255,.85) 100%);border:1px solid #fff;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s}
+.msec__card:hover{text-decoration:none;color:var(--ink);transform:translateY(-5px);box-shadow:0 18px 36px rgba(10,90,150,.3),0 0 0 3px rgba(23,162,230,.3)}
+.msec__art{flex:none;width:112px;height:112px;border-radius:18px;display:grid;place-items:center;overflow:hidden;box-shadow:0 6px 16px rgba(10,90,150,.3)}
+.msec__art--neon{background:radial-gradient(ellipse at 50% 75%,rgba(255,45,70,.4),transparent 60%),#0a0612}
+.msec__art--neon span{font:900 15px/1 Georgia,serif;letter-spacing:.06em;color:#FF4559;text-align:center;text-shadow:0 0 6px rgba(255,59,79,.9),0 0 16px rgba(255,59,79,.6)}
+.msec__art--books{background:linear-gradient(180deg,#bfeaff,#e9f8ff);position:relative}
+.msec__art--books i{position:absolute;bottom:16px;width:34px;height:64px;border-radius:3px 6px 6px 3px;box-shadow:0 4px 8px rgba(10,80,140,.3),inset 4px 0 0 rgba(0,0,0,.12)}
+.msec__art--books i:nth-child(1){left:14px;background:linear-gradient(160deg,#8fe0ff,#129ddf);transform:rotate(-8deg)}
+.msec__art--books i:nth-child(2){left:39px;height:72px;background:linear-gradient(160deg,#b8f08f,#4fb825);z-index:1}
+.msec__art--books i:nth-child(3){left:64px;background:linear-gradient(160deg,#ffffff,#9fd9f7);transform:rotate(7deg)}
+.msec__body h2{margin:0 0 4px;font-size:1.35rem;color:var(--aqua-deep)}
+.msec__body p{margin:0 0 10px;font-size:.92rem;color:var(--ink-soft)}
+.msec__go{display:inline-block;font:700 .84rem var(--font-sans);color:#fff;padding:6px 16px;border-radius:999px;border:1px solid #0b86c4;background:linear-gradient(180deg,#8fe0ff 0%,#36b8f2 48%,#129ddf 52%,#3cc0f5 100%);box-shadow:0 3px 8px rgba(10,110,180,.35),inset 0 1px 0 rgba(255,255,255,.8);text-shadow:0 1px 1px rgba(0,70,120,.5)}
+.msec__card--green .msec__go{border-color:#2f8f22;background:linear-gradient(180deg,#b8f08f 0%,#6ccc3f 48%,#4fb825 52%,#79d64c 100%);box-shadow:0 3px 8px rgba(47,143,34,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+@media (max-width:420px){.msec__art{width:84px;height:84px}.msec__art--books i{transform:scale(.8)}}
+</style>
+<nav class="msec" aria-label="Subsecciones de Medicina">
+  <a class="msec__card" href="{{ '/presentaciones/' | relative_url }}">
+    <span class="msec__art msec__art--neon"><span>ANESTESIA<br>EPIDURAL</span></span>
+    <div class="msec__body"><h2>Presentaciones</h2><p>Clases interactivas de anestesiología con simuladores, calculadoras, casos clínicos y quiz.</p><span class="msec__go">Ver presentaciones →</span></div>
+  </a>
+  <a class="msec__card msec__card--green" href="{{ '/manuales/' | relative_url }}">
+    <span class="msec__art msec__art--books"><i></i><i></i><i></i></span>
+    <div class="msec__body"><h2>Manuales</h2><p>16 compendios y manuales de estudio, más de 900 páginas para leer en línea o descargar gratis.</p><span class="msec__go">Ver manuales →</span></div>
+  </a>
+</nav>
