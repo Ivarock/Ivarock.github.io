@@ -9,7 +9,7 @@ layout: default
   {% endif %}
 </section>
 
-<nav class="section-nav">
+<nav class="section-nav" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
   <a class="section-nav__item section-nav__item--blog" href="{{ '/blog/' | relative_url }}">
     <span class="section-nav__label">Blog de Ivanov</span>
     <span class="section-nav__desc">Relatos y experiencias</span>
@@ -21,6 +21,10 @@ layout: default
   <a class="section-nav__item section-nav__item--medicina" href="{{ '/medicina/' | relative_url }}">
     <span class="section-nav__label">Medicina</span>
     <span class="section-nav__desc">Apuntes y contenido médico</span>
+  </a>
+  <a class="section-nav__item section-nav__item--presentaciones" href="{{ '/presentaciones/' | relative_url }}" style="border-top-color:#FF3B4F">
+    <span class="section-nav__label">Presentaciones</span>
+    <span class="section-nav__desc">Clases interactivas de anestesiología</span>
   </a>
 </nav>
 
