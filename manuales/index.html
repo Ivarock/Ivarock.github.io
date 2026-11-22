@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Manuales · Ivarock</title>
+<meta name="description" content="Manuales y compendios de anestesiología del Dr. Ivanov Cruz Correa: fisiología, farmacología, monitorización, TIVA y anestesia neuroaxial. Lectura en línea y descarga gratuita.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Vitrina de manuales: estantería neón; portadas reales renderizadas desde la primera página de cada PDF; lector a pantalla completa. */
+:root{
+  --bg:#05040A; --surface:rgba(16,11,24,.74); --ink:#F4EEF3; --muted:#B9ABBF; --line:rgba(255,70,95,.24);
+  --accent:#FF3B4F; --hot:#4FE3FF; --gold:#E8C46A;
+  --display:"Cinzel", Georgia, serif; --body:"Montserrat", "Segoe UI", system-ui, sans-serif;
+  --glow:0 0 6px rgba(255,59,79,.9),0 0 18px rgba(255,59,79,.65),0 0 42px rgba(255,40,60,.4);
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
+body.reading{overflow:hidden}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
+.crt{position:fixed;inset:0;pointer-events:none;z-index:3;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}
+.vig{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 40%,transparent 35%,rgba(0,0,0,.6) 80%,rgba(0,0,0,.92))}
+header,main,footer{position:relative;z-index:2}
+header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px;flex-wrap:wrap}
+header nav{display:flex;gap:18px;flex-wrap:wrap}
+header a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
+header a:hover,header a[aria-current]{color:var(--hot)}
+header .brand{font-family:var(--display);font-weight:900;letter-spacing:.2em;color:#FF5466;text-shadow:var(--glow);font-size:16px}
+main{max-width:1200px;margin:0 auto;padding:20px 20px 80px}
+.hero{text-align:center;padding:36px 0 30px}
+.pre{letter-spacing:.5em;font-size:14px;font-weight:600;padding-left:.5em}
+h1{font-family:var(--display);font-weight:900;text-transform:uppercase;color:#FF4559;text-shadow:var(--glow);font-size:clamp(44px,9vw,104px);line-height:1;margin:18px 0 0;letter-spacing:.03em;animation:neonOn 2s .2s both}
+.bar{width:min(520px,80%);height:4px;margin:22px auto 0;background:var(--accent);border-radius:3px;box-shadow:0 0 10px var(--accent),0 0 30px rgba(255,59,79,.7)}
+.lead{color:var(--muted);max-width:62ch;margin:22px auto 0;font-size:17px}
+.stats{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-top:26px}
+.stat{min-width:130px;padding:12px 18px;border:1px solid var(--line);border-radius:14px;background:var(--surface);backdrop-filter:blur(6px)}
+.stat b{display:block;font-family:var(--display);font-weight:900;font-size:30px;color:#FF5466;text-shadow:var(--glow);line-height:1.1}
+.stat span{font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+@keyframes neonOn{0%{opacity:0;text-shadow:none}12%{opacity:.9}16%{opacity:.15}24%{opacity:1;text-shadow:var(--glow)}28%{opacity:.3}36%,100%{opacity:1;text-shadow:var(--glow)}}
+@keyframes rise{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+.tools{position:sticky;top:0;z-index:5;display:flex;gap:10px;flex-wrap:wrap;align-items:center;justify-content:center;padding:14px 0;margin:10px 0 6px}
+.search{flex:1 1 260px;max-width:380px;font:inherit;color:var(--ink);background:rgba(0,0,0,.45);border:1px solid rgba(255,255,255,.22);border-radius:999px;padding:11px 18px}
+.search:focus{outline:none;border-color:var(--hot);box-shadow:0 0 14px rgba(79,227,255,.35)}
+.f{border:1px solid rgba(255,255,255,.22);background:rgba(10,8,16,.6);color:var(--ink);border-radius:999px;padding:8px 15px;font:600 14px var(--body);cursor:pointer}
+.f[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px rgba(255,59,79,.6)}
+.shelf{margin-top:34px}
+.shelf h2{font-family:var(--display);font-weight:700;font-size:clamp(22px,3vw,30px);margin:0;color:#fff;letter-spacing:.04em}
+.shelf .sub{color:var(--muted);font-size:14.5px;margin:6px 0 0}
+.shelf .rule{height:2px;margin:14px 0 22px;background:linear-gradient(90deg,var(--accent),rgba(255,59,79,0));box-shadow:0 0 10px rgba(255,59,79,.5)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(205px,1fr));gap:26px 22px}
+.book{display:flex;flex-direction:column;gap:10px;animation:rise .7s both}
+.cover{position:relative;aspect-ratio:210/297;border-radius:4px 10px 10px 4px;overflow:hidden;background:linear-gradient(135deg,#1a1326,#0b0812);box-shadow:-6px 6px 0 -1px rgba(255,255,255,.06),0 18px 40px rgba(0,0,0,.7);transform:perspective(900px) rotateY(-8deg);transform-origin:left center;transition:transform .35s cubic-bezier(.2,.7,.2,1),box-shadow .35s;cursor:pointer;border:0;padding:0;width:100%;display:block}
+.cover::before{content:"";position:absolute;left:0;top:0;bottom:0;width:10px;z-index:2;background:linear-gradient(90deg,rgba(0,0,0,.45),rgba(255,255,255,.12),rgba(0,0,0,0))}
+.cover::after{content:"";position:absolute;inset:0;z-index:2;background:linear-gradient(115deg,rgba(255,255,255,.16),transparent 35%);pointer-events:none}
+.cover canvas{width:100%;height:100%;display:block;object-fit:cover;opacity:0;transition:opacity .6s}
+.cover canvas.on{opacity:1}
+.cover .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;padding:18px;font-family:var(--display);font-weight:700;color:rgba(255,255,255,.55);font-size:15px}
+.cover .ph i{display:block;width:34px;height:34px;margin:12px auto 0;border-radius:50%;border:2px solid rgba(255,59,79,.25);border-top-color:var(--accent);animation:spin 1s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.book:hover .cover,.cover:focus-visible{transform:perspective(900px) rotateY(0deg) translateY(-8px) scale(1.02);box-shadow:0 0 0 1px rgba(255,59,79,.6),0 0 34px rgba(255,59,79,.45),0 24px 50px rgba(0,0,0,.75)}
+.pages{position:absolute;right:8px;top:8px;z-index:3;font-size:11px;font-weight:700;letter-spacing:.08em;background:rgba(5,4,10,.8);border:1px solid rgba(255,255,255,.2);border-radius:999px;padding:3px 9px}
+.book h3{margin:4px 0 0;font-family:var(--display);font-weight:700;font-size:16.5px;color:#fff;line-height:1.25}
+.book p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+.acts{display:flex;gap:8px;margin-top:auto;padding-top:4px}
+.btn{flex:1;text-align:center;text-decoration:none;font:700 13px var(--body);letter-spacing:.05em;border-radius:999px;padding:8px 10px;cursor:pointer;transition:background .2s,box-shadow .2s}
+.btn.read{border:1.5px solid var(--accent);color:#FF6273;background:rgba(255,59,79,.08);box-shadow:0 0 10px rgba(255,59,79,.35)}
+.btn.read:hover{background:rgba(255,59,79,.22);box-shadow:0 0 18px rgba(255,59,79,.6)}
+.btn.dl{border:1.5px solid rgba(79,227,255,.6);color:var(--hot);background:rgba(79,227,255,.05)}
+.btn.dl:hover{background:rgba(79,227,255,.15);box-shadow:0 0 14px rgba(79,227,255,.4)}
+.empty{text-align:center;color:var(--muted);padding:40px 0;display:none}
+footer{text-align:center;color:var(--muted);font-size:13px;padding:10px 20px 40px;max-width:760px;margin:0 auto}
+:focus-visible{outline:2px solid var(--hot);outline-offset:3px;border-radius:8px}
+
+/* lector */
+#reader{position:fixed;inset:0;z-index:50;background:rgba(4,3,8,.97);display:none;flex-direction:column}
+#reader.open{display:flex;animation:fadeIn .35s both}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.rbar{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--line);background:rgba(10,7,16,.95);flex-wrap:wrap}
+.rbar .t{flex:1;min-width:160px;font-family:var(--display);font-weight:700;color:#FF5466;text-shadow:0 0 10px rgba(255,59,79,.6);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rbar .pg{font-variant-numeric:tabular-nums;color:var(--muted);font-size:14px;min-width:84px;text-align:center}
+.ib{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.04);color:#fff;font:700 18px var(--body);cursor:pointer;display:grid;place-items:center;text-decoration:none}
+.ib:hover{border-color:var(--hot);color:var(--hot)}
+.ib.x:hover{border-color:var(--accent);color:var(--accent)}
+#pages{flex:1;overflow:auto;padding:22px 12px 60px;display:flex;flex-direction:column;align-items:center;gap:16px}
+.pg-wrap{position:relative;background:#fff;box-shadow:0 10px 40px rgba(0,0,0,.6);max-width:100%}
+.pg-wrap canvas{display:block;width:100%;height:100%}
+.pg-wrap .n{position:absolute;bottom:-20px;right:0;font-size:11px;color:var(--muted)}
+.rmsg{color:var(--muted);padding:40px;text-align:center}
+@media (max-width:560px){.grid{grid-template-columns:repeat(2,1fr);gap:22px 14px}.acts{flex-direction:column}.rbar .pg{min-width:60px}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}.cover{transform:none}}
+</style>
+</head>
+<body>
+<canvas id="bg" aria-hidden="true"></canvas><div class="vig" aria-hidden="true"></div><div class="crt" aria-hidden="true"></div>
+<header>
+  <a class="brand" href="../">IVAROCK</a>
+  <nav><a href="../">Inicio</a><a href="../presentaciones/">Presentaciones</a><a href="./" aria-current="page">Manuales</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="pre">ANESTESIOLOGÍA · BIBLIOTECA</div>
+    <h1>Manuales</h1>
+    <div class="bar"></div>
+    <p class="lead">Compendios y manuales de estudio elaborados por el Dr. Ivanov Cruz Correa, residente de Anestesiología y Reanimación. Léelos aquí mismo o descárgalos gratis.</p>
+    <div class="stats"><div class="stat"><b id="sCount">16</b><span>Manuales</span></div><div class="stat"><b id="sPages">912</b><span>Páginas</span></div><div class="stat"><b>3</b><span>Colecciones</span></div></div>
+  </section>
+
+  <div class="tools">
+    <input class="search" id="q" type="search" placeholder="Busca un tema: propofol, capnografía, TIVA…" aria-label="Buscar manual">
+    <button class="f" aria-pressed="true" data-f="all">Todos</button>
+    <button class="f" aria-pressed="false" data-f="compendio">Compendio</button>
+    <button class="f" aria-pressed="false" data-f="farmaco">Farmacología</button>
+    <button class="f" aria-pressed="false" data-f="tecnica">Técnicas</button>
+  </div>
+
+  <div id="shelves"></div>
+  <p class="empty" id="empty">No encontré manuales con ese tema. Prueba con otra palabra.</p>
+</main>
+<footer>Material de estudio con fines docentes. Las dosis y recomendaciones deben contrastarse con la literatura vigente y el protocolo de cada institución.</footer>
+
+<div id="reader" role="dialog" aria-modal="true" aria-label="Lector de manuales">
+  <div class="rbar">
+    <button class="ib x" id="rClose" aria-label="Cerrar lector">&#10005;</button>
+    <span class="t" id="rTitle"></span>
+    <button class="ib" id="rOut" aria-label="Reducir">&#8722;</button>
+    <span class="pg" id="rPg">–</span>
+    <button class="ib" id="rIn" aria-label="Ampliar">+</button>
+    <a class="ib" id="rDl" aria-label="Descargar PDF" download>&#8615;</a>
+  </div>
+  <div id="pages"></div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script>
+(function(){
+"use strict";
+var BASE="pdf/";
+var SHELVES=[
+ {id:"compendio",t:"Manual de Anestesiología",s:"Compendio de estudio por capítulos: fisiología, farmacología y monitorización aplicadas al quirófano."},
+ {id:"farmaco",t:"Manuales de farmacología",s:"Un manual por fármaco: farmacocinética, farmacodinamia, dosis y aplicaciones en anestesia."},
+ {id:"tecnica",t:"Técnicas y resúmenes",s:"Anestesia intravenosa total y anestesia neuroaxial."}
+];
+var M=[
+ {id:"fisiologia-cardiovascular",f:"CAPITU~1.PDF",sh:"compendio",t:"Cap. 1 · Fisiología cardiovascular y hemodinamia",d:"Gasto cardíaco, Frank-Starling, precarga y poscarga, retorno venoso, resistencias y presión arterial media.",p:63,k:"corazon hemodinamia gasto cardiaco frank starling precarga poscarga"},
+ {id:"fisiologia-respiratoria",f:"CAPITULO_2_Fisiologia_Respiratoria.pdf",sh:"compendio",t:"Cap. 2 · Fisiología respiratoria",d:"Volúmenes pulmonares, espacio muerto, V/Q, shunt, compliance, presiones de la vía aérea y PEEP.",p:59,k:"pulmon ventilacion shunt peep compliance"},
+ {id:"farmacologia-anestesica",f:"CAPITULO_3_Farmacologia_Anestesica.pdf",sh:"compendio",t:"Cap. 3 · Farmacología anestésica",d:"Compendio de bolsillo: inductores, benzodiacepinas, opioides, relajantes y más.",p:178,k:"propofol etomidato ketamina tiopental midazolam remimazolam fentanilo"},
+ {id:"monitorizacion",f:"CAPITULO_4_Monitorizacion_Anestesica.pdf",sh:"compendio",t:"Cap. 4 · Monitorización anestésica",d:"ECG, oximetría, capnografía, presión arterial invasiva, PVC, temperatura, TOF y BIS.",p:65,k:"ecg capnografia oximetria tof bis presion invasiva"},
+ {id:"propofol",f:"MANUAL_DE_PROPOFOL.pdf",sh:"farmaco",t:"Propofol",d:"El hipnótico de referencia: farmacología, dosis y aplicaciones.",p:51,k:"hipnotico induccion"},
+ {id:"ketamina",f:"MANUAL_DE_KETAMINA.pdf",sh:"farmaco",t:"Ketamina",d:"Farmacología aplicada del anestésico disociativo.",p:46,k:"disociativo nmda"},
+ {id:"ketamina-referencia",f:"KETAMINA MANUAL DE IVANOV_2.pdf",sh:"farmaco",t:"Ketamina en anestesiología",d:"Manual de referencia clínica y docente: del mecanismo molecular al paciente crítico.",p:24,k:"disociativo nmda critico referencia"},
+ {id:"dexmedetomidina",f:"MANUAL_DE_DEXMEDETOMIDINA.pdf",sh:"farmaco",t:"Dexmedetomidina",d:"Agonista α2 selectivo: sedación cooperativa y efectos fisiológicos.",p:67,k:"alfa2 sedacion"},
+ {id:"midazolam",f:"MANUAL_DE_MIDAZOLAM.pdf",sh:"farmaco",t:"Midazolam",d:"Benzodiacepina de uso perioperatorio: sedación, ansiólisis y dosis.",p:43,k:"benzodiacepina sedacion gaba"},
+ {id:"flumazenil",f:"MANUAL_DE_FLUMAZENIL.pdf",sh:"farmaco",t:"Flumazenil",d:"Antagonista de benzodiacepinas: indicaciones, dosis y precauciones.",p:43,k:"antagonista reversion benzodiacepina"},
+ {id:"fentanilo",f:"MANUAL_DE_FENTANILO.pdf",sh:"farmaco",t:"Fentanilo",d:"Opioide sintético: farmacocinética, efectos y dosificación.",p:44,k:"opioide analgesia"},
+ {id:"remifentanilo",f:"MANUAL_DE_REMIFENTANILO.pdf",sh:"farmaco",t:"Remifentanilo",d:"Opioide ultracorto metabolizado por esterasas: infusión y TCI.",p:45,k:"opioide infusion tci esterasas"},
+ {id:"naloxona",f:"MANUAL_DE_NALOXONA.pdf",sh:"farmaco",t:"Naloxona",d:"Antagonista opioide: reversión, titulación y vigilancia.",p:43,k:"antagonista reversion opioide"},
+ {id:"receptores",f:"MANUAL_DE_RECEPTORES.pdf",sh:"farmaco",t:"Receptores",d:"Dónde actúa cada fármaco: adrenérgicos, colinérgicos, GABA y más.",p:51,k:"adrenergicos colinergicos gaba nmda opioides"},
+ {id:"tiva",f:"MANUAL_DE_TIVA.pdf",sh:"tecnica",t:"TIVA",d:"Anestesia intravenosa total y TCI: de la farmacología a la práctica.",p:63,k:"intravenosa tci propofol remifentanilo"},
+ {id:"neuroaxial-miller",f:"Capitulo45_Miller_Resumen_de_Lujo.pdf",sh:"tecnica",t:"Anestesia neuroaxial · Miller cap. 45",d:"Resumen de lujo: intradural, epidural y caudal. Anatomía, farmacología, técnica y complicaciones.",p:27,k:"epidural raquidea espinal caudal miller"}
+];
+function url(m){return BASE+encodeURIComponent(m.f);}
+function norm(s){return s.toLowerCase().normalize("NFD").replace(/[̀-ͯ]/g,"");}
+var hasPdf=typeof window.pdfjsLib!=="undefined";
+if(hasPdf)pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js";
+
+/* estanterías */
+var root=document.getElementById("shelves"),cards=[];
+SHELVES.forEach(function(s){
+ var sec=document.createElement("section");sec.className="shelf";sec.dataset.sh=s.id;
+ sec.innerHTML='<h2>'+s.t+'</h2><p class="sub">'+s.s+'</p><div class="rule"></div><div class="grid"></div>';
+ var g=sec.querySelector(".grid");
+ M.filter(function(m){return m.sh===s.id;}).forEach(function(m,i){
+  var b=document.createElement("article");b.className="book";b.style.animationDelay=(i*.06)+"s";b.dataset.k=norm(m.t+" "+m.d+" "+m.k);b.dataset.sh=m.sh;
+  b.innerHTML='<button class="cover" aria-label="Leer '+m.t+'"><span class="ph">'+m.t+'<i></i></span><canvas></canvas><span class="pages">'+m.p+' págs.</span></button>'+
+   '<h3>'+m.t+'</h3><p>'+m.d+'</p><div class="acts"><a class="btn read" href="#'+m.id+'">Leer</a><a class="btn dl" href="'+url(m)+'" download>Descargar</a></div>';
+  b.querySelector(".cover").onclick=function(){location.hash=m.id;};
+  g.appendChild(b);cards.push({el:b,m:m});
+ });
+ root.appendChild(sec);
+});
+
+/* portadas: primera página real de cada PDF, con carga diferida */
+var queue=[],busy=0;
+function pump(){while(busy<3&&queue.length){(function(c){busy++;drawCover(c).then(done,done);function done(){busy--;pump();}})(queue.shift());}}
+function drawCover(c){
+ var cv=c.el.querySelector("canvas"),ph=c.el.querySelector(".ph");
+ return pdfjsLib.getDocument({url:url(c.m),disableAutoFetch:true,disableStream:true,rangeChunkSize:65536}).promise.then(function(doc){
+  return doc.getPage(1).then(function(pg){
+   var w=cv.parentNode.clientWidth||220,v0=pg.getViewport({scale:1}),sc=(w*Math.min(2,window.devicePixelRatio||1))/v0.width,v=pg.getViewport({scale:sc});
+   cv.width=v.width;cv.height=v.height;
+   return pg.render({canvasContext:cv.getContext("2d"),viewport:v}).promise.then(function(){cv.classList.add("on");ph.style.display="none";doc.destroy();});
+  });
+ }).catch(function(){ph.querySelector("i").style.display="none";});
+}
+if(hasPdf){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){io.unobserve(e.target);var c=cards.find(function(x){return x.el===e.target;});queue.push(c);pump();}});},{rootMargin:"300px"});
+ cards.forEach(function(c){io.observe(c.el);});
+}else cards.forEach(function(c){c.el.querySelector(".ph i").style.display="none";});
+
+/* búsqueda y filtros */
+var filt="all",fs=document.querySelectorAll(".f"),q=document.getElementById("q");
+function apply(){var t=norm(q.value.trim()),n=0;
+ cards.forEach(function(c){var ok=(filt==="all"||c.m.sh===filt)&&(!t||c.el.dataset.k.indexOf(t)>-1);c.el.style.display=ok?"":"none";if(ok)n++;});
+ document.querySelectorAll(".shelf").forEach(function(s){s.style.display=[].some.call(s.querySelectorAll(".book"),function(b){return b.style.display!=="none";})?"":"none";});
+ document.getElementById("empty").style.display=n?"none":"block";}
+fs.forEach(function(b){b.onclick=function(){fs.forEach(function(x){x.setAttribute("aria-pressed",x===b);});filt=b.dataset.f;apply();};});
+q.addEventListener("input",apply);
+
+/* lector */
+var R=document.getElementById("reader"),P=document.getElementById("pages"),cur=null,zoom=1,doc=null,pio=null,lastFocus=null;
+function openReader(m){
+ lastFocus=document.activeElement;cur=m;zoom=1;R.classList.add("open");document.body.classList.add("reading");
+ document.getElementById("rTitle").textContent=m.t;var dl=document.getElementById("rDl");dl.href=url(m);
+ document.getElementById("rPg").textContent="1 / "+m.p;P.innerHTML='<p class="rmsg">Abriendo el manual…</p>';
+ document.getElementById("rClose").focus();
+ if(!hasPdf){P.innerHTML='<p class="rmsg">No se pudo cargar el lector. <a style="color:var(--hot)" href="'+url(m)+'">Abre el PDF directamente</a>.</p>';return;}
+ pdfjsLib.getDocument({url:url(m),disableAutoFetch:true,disableStream:true,rangeChunkSize:131072}).promise.then(function(d){if(cur!==m){d.destroy();return;}doc=d;layout();})
+ .catch(function(){P.innerHTML='<p class="rmsg">No se pudo abrir el manual. <a style="color:var(--hot)" href="'+url(m)+'">Descárgalo aquí</a>.</p>';});
+}
+function layout(){
+ P.innerHTML="";if(pio)pio.disconnect();
+ doc.getPage(1).then(function(p1){
+  var v0=p1.getViewport({scale:1}),maxW=Math.min(P.clientWidth-24,900)*zoom,ratio=v0.height/v0.width;
+  pio=new IntersectionObserver(function(es){es.forEach(function(e){var w=e.target;if(e.isIntersecting&&!w.dataset.r){w.dataset.r="1";renderPage(w);}});},{root:P,rootMargin:"600px 0px"});var step=maxW*ratio+16;P.onscroll=function(){var n=Math.min(doc.numPages,Math.floor((P.scrollTop+P.clientHeight*.35)/step)+1);document.getElementById("rPg").textContent=n+" / "+doc.numPages;};P.scrollTop=0;P.onscroll();
+  for(var i=1;i<=doc.numPages;i++){var w=document.createElement("div");w.className="pg-wrap";w.dataset.n=i;w.style.width=maxW+"px";w.style.height=(maxW*ratio)+"px";w.innerHTML='<span class="n">'+i+'</span>';P.appendChild(w);pio.observe(w);}
+ });
+}
+function renderPage(w){var n=+w.dataset.n,d=doc;d.getPage(n).then(function(pg){if(d!==doc)return;var cw=w.clientWidth,v0=pg.getViewport({scale:1}),sc=cw*Math.min(2,window.devicePixelRatio||1)/v0.width,v=pg.getViewport({scale:sc}),c=document.createElement("canvas");c.width=v.width;c.height=v.height;w.insertBefore(c,w.firstChild);pg.render({canvasContext:c.getContext("2d"),viewport:v});});}
+function closeReader(){R.classList.remove("open");document.body.classList.remove("reading");if(doc){doc.destroy();doc=null;}cur=null;P.innerHTML="";if(pio)pio.disconnect();if(lastFocus&&lastFocus.focus)lastFocus.focus();}
+document.getElementById("rClose").onclick=function(){if(location.hash){history.pushState("",document.title,location.pathname+location.search);}closeReader();};
+document.getElementById("rIn").onclick=function(){if(!doc)return;zoom=Math.min(2.5,zoom+.25);layout();};
+document.getElementById("rOut").onclick=function(){if(!doc)return;zoom=Math.max(.5,zoom-.25);layout();};
+document.addEventListener("keydown",function(e){if(e.key==="Escape"&&R.classList.contains("open"))document.getElementById("rClose").click();});
+function route(){var id=location.hash.slice(1),m=M.find(function(x){return x.id===id;});if(m)openReader(m);else if(R.classList.contains("open"))closeReader();}
+window.addEventListener("hashchange",route);route();
+
+/* fondo */
+var cv=document.getElementById("bg"),g=cv.getContext("2d"),W,H,D=Math.min(2,window.devicePixelRatio||1),Pt=[],F=[];
+var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
+function rs(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);Pt=[];F=[];
+ for(var i=0;i<Math.min(80,W*H/16000);i++)Pt.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*2,vy:-(.08+Math.random()*.3),ph:Math.random()*6.3,w:Math.random()<.55});
+ for(var j=0;j<5;j++)F.push({x:Math.random()*W,y:H*(.3+Math.random()*.7),R:(.35+Math.random()*.4)*Math.max(W,H),vx:(Math.random()-.5)*.18,c:j%3===2});}
+function fr(t){if(document.body.classList.contains("reading")){if(!RM)requestAnimationFrame(fr);return;}
+ var bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#06040c");bg.addColorStop(1,"#0d0614");g.fillStyle=bg;g.fillRect(0,0,W,H);g.globalCompositeOperation="lighter";
+ F.forEach(function(f){f.x+=f.vx;if(f.x<-f.R)f.x=W+f.R;if(f.x>W+f.R)f.x=-f.R;var r=g.createRadialGradient(f.x,f.y,0,f.x,f.y,f.R);r.addColorStop(0,f.c?"rgba(60,120,255,.08)":"rgba(255,45,70,.085)");r.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=r;g.fillRect(0,0,W,H);});
+ Pt.forEach(function(p){p.y+=p.vy;p.x+=Math.sin(t/2000+p.ph)*.12;if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}var a=Math.max(0,.35+.45*Math.sin(t/900+p.ph)),c=p.w?"255,170,120":"150,220,255",Rr=p.r*5,qg=g.createRadialGradient(p.x,p.y,0,p.x,p.y,Rr);qg.addColorStop(0,"rgba("+c+","+(a*.9).toFixed(3)+")");qg.addColorStop(.25,"rgba("+c+","+(a*.25).toFixed(3)+")");qg.addColorStop(1,"rgba("+c+",0)");g.fillStyle=qg;g.fillRect(p.x-Rr,p.y-Rr,Rr*2,Rr*2);});
+ g.globalCompositeOperation="source-over";if(!RM)requestAnimationFrame(fr);}
+rs();requestAnimationFrame(fr);addEventListener("resize",function(){rs();if(RM)requestAnimationFrame(fr);});
+})();
+</script>
+</body>
+</html>
