@@ -1,0 +1,25 @@
+# Páginas que no son entradas del blog y que también aparecen en el buscador.
+- {t: "Artículos", u: "/articulos/", tipo: "Sección", d: "Artículos de opinión y revisión en anestesiología."}
+- {t: "Oxigenación apneica con cánula nasal en la SIR obstétrica", u: "/articulos/oxigenacion-apneica-obstetricia/", tipo: "Artículo", d: "Por qué debería ser estándar en la secuencia de intubación rápida de la paciente obstétrica.", k: "vía aérea cesárea intubación preoxigenación"}
+- {t: "Oxitocina en la cesárea", u: "/articulos/oxitocina-cesarea/", tipo: "Artículo", d: "Entre la eficacia uterotónica y la seguridad materna.", k: "uterotónico atonía hemorragia postparto dosis"}
+- {t: "Dexmedetomidina en anestesiología", u: "/articulos/dexmedetomidina-resistencia-evidencia/", tipo: "Artículo", d: "Entre la resistencia a su uso y la evidencia científica.", k: "alfa-2 sedación bradicardia hipotensión delirium"}
+- {t: "Presentaciones", u: "/presentaciones/", tipo: "Sección", d: "Clases interactivas de anestesiología y cirugía."}
+- {t: "Anestesia epidural", u: "/presentaciones/anestesia-epidural/", tipo: "Presentación", d: "Técnica, procedimiento, fármacos y complicaciones de la anestesia epidural.", k: "neuroaxial peridural bupivacaína dosis de prueba"}
+- {t: "Clasificación de las heridas", u: "/presentaciones/clasificacion-heridas/", tipo: "Presentación", d: "Por causa y mecanismo, heridas crónicas y manejo.", k: "cirugía úlceras mordeduras quemaduras regla de los nueve"}
+- {t: "Manuales", u: "/manuales/", tipo: "Sección", d: "16 manuales de anestesiología de libre descarga."}
+- {t: "Cap. 1 · Fisiología cardiovascular y hemodinamia", u: "/manuales/#fisiologia-cardiovascular", tipo: "Manual", d: "Gasto cardíaco, Frank-Starling, precarga y poscarga, retorno venoso, resistencias y presión arterial media."}
+- {t: "Cap. 2 · Fisiología respiratoria", u: "/manuales/#fisiologia-respiratoria", tipo: "Manual", d: "Volúmenes pulmonares, espacio muerto, V/Q, shunt, compliance, presiones de la vía aérea y PEEP."}
+- {t: "Cap. 3 · Farmacología anestésica", u: "/manuales/#farmacologia-anestesica", tipo: "Manual", d: "Inductores, benzodiacepinas, opioides, relajantes y más.", k: "propofol etomidato ketamina tiopental midazolam remimazolam fentanilo"}
+- {t: "Cap. 4 · Monitorización anestésica", u: "/manuales/#monitorizacion", tipo: "Manual", d: "ECG, oximetría, capnografía, presión arterial invasiva, PVC, temperatura, TOF y BIS."}
+- {t: "Propofol", u: "/manuales/#propofol", tipo: "Manual", d: "El hipnótico de referencia: farmacología, dosis y aplicaciones."}
+- {t: "Ketamina", u: "/manuales/#ketamina", tipo: "Manual", d: "Farmacología aplicada del anestésico disociativo."}
+- {t: "Ketamina en anestesiología", u: "/manuales/#ketamina-referencia", tipo: "Manual", d: "Manual de referencia clínica y docente."}
+- {t: "Dexmedetomidina", u: "/manuales/#dexmedetomidina", tipo: "Manual", d: "Agonista α2 selectivo: sedación cooperativa y efectos fisiológicos."}
+- {t: "Midazolam", u: "/manuales/#midazolam", tipo: "Manual", d: "Benzodiacepina de uso perioperatorio: sedación, ansiólisis y dosis."}
+- {t: "Flumazenil", u: "/manuales/#flumazenil", tipo: "Manual", d: "Antagonista de benzodiacepinas: indicaciones, dosis y precauciones."}
+- {t: "Fentanilo", u: "/manuales/#fentanilo", tipo: "Manual", d: "Opioide sintético: farmacocinética, efectos y dosificación."}
+- {t: "Remifentanilo", u: "/manuales/#remifentanilo", tipo: "Manual", d: "Opioide ultracorto metabolizado por esterasas: infusión y TCI."}
+- {t: "Naloxona", u: "/manuales/#naloxona", tipo: "Manual", d: "Antagonista opioide: reversión, titulación y vigilancia."}
+- {t: "Receptores", u: "/manuales/#receptores", tipo: "Manual", d: "Dónde actúa cada fármaco: adrenérgicos, colinérgicos, GABA y más."}
+- {t: "TIVA", u: "/manuales/#tiva", tipo: "Manual", d: "Anestesia intravenosa total y TCI.", k: "propofol remifentanilo"}
+- {t: "Anestesia neuroaxial · Miller cap. 45", u: "/manuales/#neuroaxial-miller", tipo: "Manual", d: "Intradural, epidural y caudal: anatomía, farmacología, técnica y complicaciones.", k: "raquídea espinal epidural"}

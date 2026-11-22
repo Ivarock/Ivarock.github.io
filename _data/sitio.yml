@@ -1,0 +1,5 @@
+# Ajustes del sitio que puedes cambiar sin tocar el código.
+# goatcounter: el código que elegiste al crear tu cuenta en goatcounter.com (por ejemplo: ivarock). Vacío = desactivado.
+goatcounter: ""
+# whatsapp_canal: enlace a tu canal de WhatsApp (https://whatsapp.com/channel/...). Vacío = no se muestra el botón.
+whatsapp_canal: ""
