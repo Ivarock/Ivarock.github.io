@@ -1,0 +1,60 @@
+---
+layout: default
+title: Casos clínicos interactivos
+description: Casos cortos de anestesiología para decidir paso a paso, con explicación de cada respuesta.
+permalink: /casos/
+tipo: Herramienta
+keywords: casos clínicos interactivos cesárea raquídea hipotensión fenilefrina efedrina oxitocina anestesia obstétrica
+---
+<nav class="x-crumb"><a href="{{ '/medicina/' | relative_url }}">← Medicina</a></nav>
+<section class="x-hero">
+  <span class="pre">Decide paso a paso</span>
+  <h1>Casos clínicos</h1>
+  <p>Casos cortos de quirófano: lees la escena, eliges qué harías y ves la explicación. Iré subiendo casos nuevos con frecuencia.</p>
+</section>
+
+<div class="x-chips" id="cs-list" style="justify-content:center;margin-bottom:14px"></div>
+<div class="x-card" style="margin-bottom:30px"><div id="cs" aria-live="polite"></div></div>
+<p class="x-note" style="text-align:center;margin:-10px 0 30px">Casos docentes. Las dosis son orientativas y deben ajustarse al paciente y al protocolo de tu institución.</p>
+
+<script>
+(function(){
+  var CASOS=[
+  {id:'raquidea-cesarea',t:'Hipotensión tras raquídea en cesárea',tag:'Obstetricia',
+   intro:'Mujer de 28 años, 39 semanas, cesárea programada. Raquídea con bupivacaína hiperbárica 10 mg + fentanilo 20 µg. PA basal 120/75, FC 88.',
+   pasos:[
+    {t:'A los 4 minutos refiere náuseas. PA 78/40, FC 96. Bloqueo sensitivo en T4.',v:['PA 78/40','FC 96','SpO₂ 99 %'],q:'¿Qué haces primero?',
+     o:[['Bolo de fenilefrina (50–100 µg) y desplazamiento uterino a la izquierda','Correcto. La fenilefrina es de primera línea con FC normal o alta; el desplazamiento uterino alivia la compresión aortocava. Las náuseas suelen ser el primer signo de hipotensión.'],
+        ['Atropina 0,5 mg IV','La frecuencia cardíaca es normal: el problema es la vasodilatación, no la bradicardia.'],
+        ['Esperar 5 minutos y volver a medir','La hipotensión materna reduce el flujo uteroplacentario: hay que tratarla de inmediato.']],a:0},
+    {t:'Tras varios bolos de fenilefrina, la PA es 88/50 y la FC baja a 52 lpm.',v:['PA 88/50','FC 52'],q:'¿Cómo sigues?',
+     o:[['Cambiar a efedrina (5–10 mg) o noradrenalina','Correcto. Con hipotensión y bradicardia conviene un vasopresor con efecto β (efedrina) o noradrenalina, que mantiene mejor el gasto cardíaco.'],
+        ['Más fenilefrina a dosis mayores','La fenilefrina causa bradicardia refleja: más dosis pueden reducir aún más el gasto cardíaco.'],
+        ['Adrenalina 1 mg IV','Es una dosis de paro cardíaco: aquí produciría hipertensión y arritmias graves.']],a:0},
+    {t:'Se estabiliza. El equipo te pregunta cómo prevenir esto en la próxima cesárea con raquídea.',v:['PA 112/70','FC 84'],q:'¿Qué estrategia recomiendas?',
+     o:[['Infusión profiláctica de fenilefrina más cocarga de cristaloides','Correcto. Es la estrategia recomendada por el consenso internacional de 2018: infusión de vasopresor desde la raquídea más cristaloide rápido en el momento del bloqueo.'],
+        ['Precarga de 2 L de cristaloide antes de la punción','La precarga sola es poco eficaz: el líquido se redistribuye antes de la vasodilatación.'],
+        ['Posición de Trendelenburg durante toda la cirugía','No previene la hipotensión de forma fiable y puede subir el nivel del bloqueo con soluciones hiperbáricas.']],a:0},
+    {t:'Nace el bebé. El ginecólogo pide oxitocina.',v:['Útero en extracción'],q:'¿Cómo la administras?',
+     o:[['Bolo lento de 1–3 UI y luego infusión, evaluando el tono uterino','Correcto. En la cesárea programada bastan dosis bajas: los bolos grandes y rápidos causan hipotensión y taquicardia sin mejorar la contracción.'],
+        ['10 UI en bolo rápido','Un bolo grande y rápido produce vasodilatación abrupta, hipotensión y taquicardia, peor aún bajo raquídea.'],
+        ['40 UI de inicio para asegurar la contracción','Dosis tan altas no mejoran la contracción y sí aumentan los efectos hemodinámicos. Si hay atonía, se cambia de uterotónico.']],a:0}
+   ],
+   cierre:'La hipotensión tras raquídea es la regla, no la excepción: prevenir con vasopresor profiláctico y cocarga, elegir el vasopresor según la frecuencia cardíaca y dar la oxitocina a dosis bajas y lentas.',
+   lee:['/articulos/oxitocina-cesarea/','Lee mi artículo sobre oxitocina en la cesárea']}
+  ];
+  var list=document.getElementById('cs-list'),box=document.getElementById('cs'),cur=0,paso=-1,ok=0;
+  CASOS.forEach(function(c,k){var b=document.createElement('button');b.className='x-chip';b.textContent='Caso '+(k+1)+' · '+c.t;b.onclick=function(){cur=k;paso=-1;ok=0;r()};list.appendChild(b)});
+  var prox=document.createElement('span');prox.className='x-chip';prox.style.opacity='.6';prox.textContent='Próximo caso: pronto';list.appendChild(prox);
+  function r(){
+    [].forEach.call(list.querySelectorAll('button'),function(b,k){b.setAttribute('aria-pressed',k===cur)});
+    var c=CASOS[cur];
+    if(paso<0){box.innerHTML='<span class="x-badge">'+c.tag+'</span><h2 style="margin-top:8px">'+c.t+'</h2><p>'+c.intro+'</p><button class="x-btn" id="cs-go">Empezar el caso ›</button>';document.getElementById('cs-go').onclick=function(){paso=0;r()};return}
+    if(paso>=c.pasos.length){box.innerHTML='<p class="x-note" style="margin:0">Fin del caso</p><div class="qz__score">'+ok+'/'+c.pasos.length+'</div><p>decisiones correctas.</p><div class="x-warn"><b>Para llevar:</b> '+c.cierre+'</div><div class="x-chips"><button class="x-btn" id="cs-r">Repetir el caso</button>'+(c.lee?'<a class="x-btn x-btn--ghost" href="{{ site.baseurl }}'+c.lee[0]+'">'+c.lee[1]+'</a>':'')+'</div>';document.getElementById('cs-r').onclick=function(){paso=-1;ok=0;r()};return}
+    var p=c.pasos[paso],ord=[0,1,2].sort(function(){return Math.random()-.5});
+    box.innerHTML='<div class="qz__dots">'+c.pasos.map(function(_,k){return '<i class="'+(k<=paso?'on':'')+'"></i>'}).join('')+'</div><p class="x-note" style="margin:0">Escena '+(paso+1)+' de '+c.pasos.length+'</p><p>'+p.t+'</p><div class="vitals">'+p.v.map(function(v){return '<span>'+v+'</span>'}).join('')+'</div><h3 style="margin:10px 0 0">'+p.q+'</h3><div class="qz__opts">'+ord.map(function(k,j){return '<button class="qz__opt" data-k="'+k+'"><span class="l">'+'ABC'[j]+'</span><span>'+p.o[k][0]+'</span></button>'}).join('')+'</div><div class="qz__exp" id="cs-e"></div>';
+    [].forEach.call(box.querySelectorAll('.qz__opt'),function(b){b.onclick=function(){var k=+b.dataset.k;[].forEach.call(box.querySelectorAll('.qz__opt'),function(z){z.disabled=true;if(+z.dataset.k===p.a)z.classList.add('right')});if(k!==p.a)b.classList.add('wrong');else ok++;var e=document.getElementById('cs-e');e.classList.add('show');e.innerHTML='<p style="margin:0"><b>'+(k===p.a?'Bien.':'No es la mejor opción.')+'</b> '+p.o[k][1]+'</p>'+(k!==p.a?'<p style="margin:6px 0 0"><b>Mejor opción:</b> '+p.o[p.a][1]+'</p>':'')+'<button class="x-btn" style="margin-top:10px" id="cs-n">'+(paso===c.pasos.length-1?'Ver resultado':'Continuar ›')+'</button>';document.getElementById('cs-n').onclick=function(){paso++;r()}}})
+  }
+  r();
+})();
+</script>
