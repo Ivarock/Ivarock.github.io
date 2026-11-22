@@ -1,0 +1,75 @@
+---
+layout: default
+title: Glosario de anestesiología
+description: Términos clave de anestesiología explicados en pocas palabras, con enlaces a los manuales.
+permalink: /glosario/
+tipo: Herramienta
+keywords: glosario definiciones términos anestesiología CAM TOF BIS capnografía shunt espacio muerto Mallampati PEEP TCI vida media contextual
+---
+<nav class="x-crumb"><a href="{{ '/medicina/' | relative_url }}">← Medicina</a></nav>
+<section class="x-hero">
+  <span class="pre">Anestesiología de la A a la Z</span>
+  <h1>Glosario</h1>
+  <p>Los términos que más se repiten en quirófano, explicados en pocas palabras. Donde hay más para leer, te dejo el enlace al manual.</p>
+</section>
+
+<div class="x-card" style="margin-bottom:30px">
+  <input class="gl__search" id="gq" type="search" placeholder="Busca un término: CAM, shunt, TOF…" aria-label="Buscar en el glosario">
+  <nav class="gl__letters" id="gl-l" aria-label="Letras"></nav>
+  <p class="x-note" id="gl-n"></p>
+  <div id="gl"></div>
+</div>
+
+<script>
+(function(){
+  var M='{{ "/manuales/" | relative_url }}';
+  var G=[
+    ['Anestesia disociativa','Estado de catalepsia con analgesia intensa y ojos abiertos, característico de la ketamina, por desconexión funcional entre el tálamo y la corteza.','ketamina'],
+    ['ASA (estado físico)','Clasificación de I a VI del estado de salud previo del paciente; se añade “E” en la cirugía de emergencia.',null,'/calculadoras/#c-asa'],
+    ['BIS (índice biespectral)','Número de 0 a 100 derivado del EEG que estima la profundidad hipnótica; 40–60 suele corresponder a anestesia general adecuada.','monitorizacion'],
+    ['Bloqueo de fase II','Bloqueo neuromuscular con características no despolarizantes (fade al TOF) que aparece tras dosis altas o repetidas de succinilcolina.'],
+    ['CAM (concentración alveolar mínima)','Concentración alveolar de un anestésico inhalatorio que impide el movimiento ante la incisión quirúrgica en el 50 % de los pacientes.','farmacologia-anestesica'],
+    ['Capnografía','Registro continuo del CO₂ espirado; confirma la intubación traqueal y refleja ventilación, perfusión y metabolismo.','monitorizacion'],
+    ['Capacidad residual funcional (CRF)','Volumen de aire que queda en los pulmones al final de una espiración normal; es la reserva de oxígeno durante la apnea.','fisiologia-respiratoria'],
+    ['Compliance','Cambio de volumen pulmonar por unidad de cambio de presión (ΔV/ΔP); mide la distensibilidad del sistema respiratorio.','fisiologia-respiratoria'],
+    ['Dosis de prueba (epidural)','Pequeña dosis de anestésico local, a veces con adrenalina, para descartar colocación intravascular o intratecal del catéter.',null,'/presentaciones/anestesia-epidural/'],
+    ['Espacio muerto','Parte del volumen corriente que no participa en el intercambio gaseoso (anatómico + alveolar).','fisiologia-respiratoria'],
+    ['Fade','Disminución progresiva de la respuesta muscular ante estímulos repetidos (TOF o tetánico); típico del bloqueo no despolarizante.'],
+    ['Frank-Starling','Ley según la cual, dentro de límites, a mayor precarga (estiramiento de la fibra) mayor fuerza de contracción y volumen sistólico.','fisiologia-cardiovascular'],
+    ['Hiperalgesia inducida por opioides','Aumento paradójico de la sensibilidad al dolor tras la exposición a opioides, sobre todo a dosis altas de remifentanilo.','remifentanilo'],
+    ['Ketofol','Mezcla de ketamina y propofol para sedación; busca compensar la hipotensión del propofol con el efecto simpático de la ketamina.',null,'/apps/'],
+    ['LAST','Toxicidad sistémica por anestésicos locales: síntomas neurológicos (convulsiones) y cardiovasculares (arritmias, paro). Se trata con emulsión lipídica al 20 %.',null,'/calculadoras/#c-lip'],
+    ['Mallampati','Clasificación (I–IV) de la visibilidad de las estructuras orofaríngeas con la boca abierta, para predecir la dificultad de intubación.'],
+    ['Oxigenación apneica','Aporte de oxígeno por cánula nasal durante la apnea, que prolonga el tiempo hasta la desaturación.',null,'/articulos/oxigenacion-apneica-obstetricia/'],
+    ['PEEP','Presión positiva al final de la espiración; mantiene abiertos los alvéolos y mejora la oxigenación.','fisiologia-respiratoria'],
+    ['Precarga','Grado de estiramiento de la fibra miocárdica al final de la diástole; se aproxima con el volumen telediastólico.','fisiologia-cardiovascular'],
+    ['Poscarga','Resistencia que debe vencer el ventrículo para eyectar la sangre.','fisiologia-cardiovascular'],
+    ['Preoxigenación','Respirar oxígeno al 100 % antes de la inducción para reemplazar el nitrógeno de la CRF por oxígeno (desnitrogenación).',null,'/articulos/oxigenacion-apneica-obstetricia/'],
+    ['PRIS','Síndrome de infusión de propofol: acidosis metabólica, rabdomiólisis, hiperpotasemia y falla cardíaca con infusiones altas y prolongadas.','propofol'],
+    ['PTC (cuenta postetánica)','Número de respuestas a estímulos simples tras un estímulo tetánico; permite cuantificar el bloqueo neuromuscular profundo.','monitorizacion'],
+    ['Secuencia de intubación rápida (SIR)','Inducción e intubación con el menor tiempo posible entre la pérdida de consciencia y la protección de la vía aérea, en pacientes con riesgo de aspiración.',null,'/articulos/oxigenacion-apneica-obstetricia/'],
+    ['Shunt','Sangre que pasa por el pulmón sin oxigenarse (V/Q = 0); no mejora al aumentar la FiO₂.','fisiologia-respiratoria'],
+    ['Simpaticólisis','Disminución del tono simpático; explica la bradicardia y la hipotensión de la dexmedetomidina y del bloqueo neuroaxial.','dexmedetomidina'],
+    ['TCI (infusión controlada por objetivo)','Infusión que una bomba ajusta con un modelo farmacocinético para alcanzar una concentración plasmática o en el sitio efecto.','tiva'],
+    ['TIVA','Anestesia intravenosa total: hipnosis y analgesia solo por vía intravenosa, sin agentes inhalatorios.','tiva'],
+    ['TOF (tren de cuatro)','Cuatro estímulos a 2 Hz; el cociente T4/T1 ≥ 0,9 indica recuperación adecuada del bloqueo neuromuscular.','monitorizacion'],
+    ['Vida media contextual','Tiempo que tarda en reducirse un 50 % la concentración plasmática tras suspender una infusión de una duración determinada.','remifentanilo'],
+    ['Volumen corriente','Volumen de aire que entra o sale en cada respiración; en ventilación protectora, 6–8 mL/kg de peso ideal.','fisiologia-respiratoria'],
+    ['V/Q (relación ventilación/perfusión)','Equilibrio entre ventilación alveolar y flujo sanguíneo pulmonar; sus alteraciones son la causa más frecuente de hipoxemia.','fisiologia-respiratoria']
+  ];
+  G.sort(function(a,b){return a[0].localeCompare(b[0],'es')});
+  function norm(s){return s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
+  var box=document.getElementById('gl'),q=document.getElementById('gq'),lt=document.getElementById('gl-l'),n=document.getElementById('gl-n');
+  function L(t){return norm(t[0]).toUpperCase()}
+  function render(){
+    var s=norm(q.value.trim()),items=G.filter(function(g){return !s||norm(g[0]+' '+g[1]).indexOf(s)>-1}),last='',h='';
+    items.forEach(function(g){var l=L(g[0]);if(l!==last){h+='<div class="gl__L" id="L-'+l+'">'+l+'</div>';last=l}
+      var ref=g[2]?' <a class="ref" href="'+M+'#'+g[2]+'">Ver manual →</a>':g[3]?' <a class="ref" href="{{ site.baseurl }}'+g[3]+'">Ver más →</a>':'';
+      h+='<dl class="gl__item"><dt>'+g[0]+'</dt><dd>'+g[1]+ref+'</dd></dl>'});
+    box.innerHTML=h||'<p>No hay términos que coincidan.</p>';n.textContent=items.length+' término'+(items.length===1?'':'s');
+  }
+  var ls=[];G.forEach(function(g){var l=L(g[0]);if(ls.indexOf(l)<0)ls.push(l)});
+  lt.innerHTML=ls.map(function(l){return '<a href="#L-'+l+'">'+l+'</a>'}).join('');
+  q.addEventListener('input',render);render();
+})();
+</script>
