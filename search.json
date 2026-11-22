@@ -1,0 +1,25 @@
+---
+layout: null
+permalink: /search.json
+sitemap: false
+---
+[
+{%- assign first = true -%}
+{%- for p in site.posts -%}
+{%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+{"t":{{ p.title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"tipo":"Blog","d":{{ p.excerpt | strip_html | strip_newlines | truncate: 180 | jsonify }},"k":{{ p.tags | join: " " | jsonify }}}
+{%- endfor -%}
+{%- for p in site.pages -%}
+{%- if p.title and p.buscable != false and p.url != "/404.html" -%}
+{%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+{"t":{{ p.title | jsonify }},"u":{{ p.url | relative_url | jsonify }},"tipo":{{ p.tipo | default: "Página" | jsonify }},"d":{{ p.description | default: "" | jsonify }},"k":{{ p.keywords | default: "" | jsonify }}}
+{%- endif -%}
+{%- endfor -%}
+{%- for p in site.data.buscador -%}
+{%- unless first -%},{%- endunless -%}{%- assign first = false -%}
+{"t":{{ p.t | jsonify }},"u":{{ p.u | relative_url | jsonify }},"tipo":{{ p.tipo | jsonify }},"d":{{ p.d | jsonify }},"k":{{ p.k | default: "" | jsonify }}}
+{%- endfor -%}
+{%- for p in site.data.kuula -%}
+,{"t":{{ p.titulo | append: " (foto 360°)" | jsonify }},"u":{{ "/fotografia/#fotos-360" | relative_url | jsonify }},"tipo":"Foto 360°","d":{{ p.lugar | append: " " | append: p.anio | jsonify }},"k":{{ p.grupo | jsonify }}}
+{%- endfor -%}
+]

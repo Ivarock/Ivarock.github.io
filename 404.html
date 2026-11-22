@@ -1,0 +1,26 @@
+---
+layout: default
+title: Página no encontrada
+permalink: /404.html
+buscable: false
+---
+<section class="e404">
+  <svg class="mon" viewBox="0 0 420 230" role="img" aria-label="Monitor con trazo plano">
+    <defs><linearGradient id="m4" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#36b8f2"/><stop offset="1" stop-color="#0a6aa8"/></linearGradient></defs>
+    <rect x="10" y="10" width="400" height="190" rx="22" fill="url(#m4)"/>
+    <rect x="26" y="26" width="368" height="158" rx="12" fill="#0b2a3f"/>
+    <g fill="#6dff9c" font-family="monospace" font-weight="700"><text x="44" y="56" font-size="15">FC  ---</text><text x="44" y="78" font-size="15">SpO₂ 404</text><text x="300" y="56" font-size="13" fill="#ff6b6b">ALARMA</text></g>
+    <path id="trazo" d="M40 130 H120 L132 100 L144 160 L156 120 L166 130 H230" fill="none" stroke="#6dff9c" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M230 130 H380" fill="none" stroke="#6dff9c" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="380" cy="130" r="5" fill="#6dff9c"><animate attributeName="opacity" values="1;.2;1" dur="1s" repeatCount="indefinite"/></circle>
+    <rect x="180" y="200" width="60" height="14" fill="#0a6aa8"/><rect x="140" y="212" width="140" height="10" rx="5" fill="#0a6aa8"/>
+  </svg>
+  <h1>404</h1>
+  <p><b>Esta página no tiene pulso.</b> Revisamos la vía aérea, la ventilación y la circulación, y nada: el enlace no existe o se mudó de lugar. No te preocupes, el resto del sitio está estable.</p>
+  <div class="x-chips" style="justify-content:center;margin-top:16px">
+    <a class="x-btn" href="{{ '/' | relative_url }}">Volver al inicio</a>
+    <a class="x-btn x-btn--green" href="{{ '/buscar/' | relative_url }}">Buscar en el sitio</a>
+    <a class="x-btn x-btn--ghost" href="{{ '/medicina/' | relative_url }}">Ir a Medicina</a>
+  </div>
+</section>
+<script>document.body.setAttribute('data-noshare','')</script>
