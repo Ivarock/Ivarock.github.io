@@ -1,0 +1,90 @@
+---
+layout: default
+title: Flashcards y quiz
+description: Tarjetas de repaso y autoevaluación de farmacología anestésica para residentes.
+permalink: /estudio/
+tipo: Herramienta
+keywords: flashcards quiz farmacología propofol ketamina dexmedetomidina midazolam flumazenil fentanilo remifentanilo naloxona etomidato succinilcolina rocuronio sugammadex lidocaína bupivacaína CAM residentes examen
+---
+<nav class="x-crumb"><a href="{{ '/medicina/' | relative_url }}">← Medicina</a></nav>
+<section class="x-hero">
+  <span class="pre">Repaso para residentes</span>
+  <h1>Flashcards y quiz</h1>
+  <p>Farmacología anestésica en tarjetas: lee la pregunta, piensa la respuesta y toca la tarjeta para voltearla. Después, ponte a prueba con el quiz.</p>
+</section>
+
+<div class="x-card" style="margin-bottom:20px">
+  <div class="x-chips" id="fc-mazo" role="group" aria-label="Elegir tema"></div>
+  <div class="fc" id="fc"><div class="fc__inner" id="fc-in" role="button" tabindex="0" aria-label="Voltear tarjeta">
+    <div class="fc__face fc__front"><div class="fc__tag" id="fc-tag"></div><div class="fc__q" id="fc-q"></div><p class="x-note" style="margin-top:14px">Toca para ver la respuesta</p></div>
+    <div class="fc__face fc__back"><div class="fc__tag" id="fc-tag2"></div><div class="fc__a" id="fc-a"></div></div>
+  </div></div>
+  <div class="fc__nav">
+    <button class="x-btn x-btn--ghost" id="fc-prev">‹ Anterior</button>
+    <span class="x-note" id="fc-n"></span>
+    <button class="x-btn" id="fc-next">Siguiente ›</button>
+  </div>
+  <div class="fc__nav"><button class="x-btn x-btn--ghost" id="fc-mix">Barajar</button></div>
+</div>
+
+<div class="x-card" style="margin-bottom:30px" id="quiz">
+  <h2>Quiz de farmacología</h2>
+  <div id="qz" aria-live="polite"></div>
+</div>
+<p class="x-note" style="text-align:center;margin:-10px 0 30px">Dosis orientativas para adultos sanos, con fines de estudio. Ajusta siempre al paciente y al protocolo de tu institución. ¿Quieres profundizar? Revisa los <a href="{{ '/manuales/' | relative_url }}">manuales</a>.</p>
+
+<script>
+(function(){
+  var C=[
+    ['Inductores','Propofol: dosis de inducción en el adulto','1,5–2,5 mg/kg IV. Reducir en ancianos, hipovolémicos o pacientes con poca reserva cardiovascular.'],
+    ['Inductores','Propofol: ¿qué es el síndrome de infusión de propofol (PRIS)?','Acidosis metabólica, rabdomiólisis, hiperpotasemia, hiperlipidemia y falla cardíaca. Riesgo con infusiones > 4 mg/kg/h durante > 48 h.'],
+    ['Inductores','Ketamina: mecanismo de acción','Antagonista no competitivo del receptor NMDA. Produce anestesia disociativa con analgesia intensa.'],
+    ['Inductores','Ketamina: dosis de inducción IV e IM','IV: 1–2 mg/kg. IM: 4–6 mg/kg.'],
+    ['Inductores','Ketamina: efecto hemodinámico','Estimulación simpática (↑ FC, ↑ PA, ↑ gasto cardíaco). Es un depresor miocárdico directo, evidente si las catecolaminas están agotadas.'],
+    ['Inductores','Etomidato: dosis y efecto adverso característico','0,2–0,3 mg/kg IV. Supresión suprarrenal por inhibición de la 11β-hidroxilasa.'],
+    ['Sedantes','Dexmedetomidina: mecanismo','Agonista α2 adrenérgico altamente selectivo (relación α2:α1 ≈ 1600:1). Sedación cooperativa con poca depresión respiratoria.'],
+    ['Sedantes','Dexmedetomidina: dosis','Carga opcional 0,5–1 µg/kg en 10 min; infusión 0,2–0,7 µg/kg/h. La carga rápida causa bradicardia e hipotensión (o hipertensión transitoria).'],
+    ['Sedantes','Midazolam: cómo titular la sedación IV en el adulto','Dosis inicial no mayor de 2,5 mg IV en 2 min, y esperar 2 min entre dosis. Menos en ancianos y si hay opioides.'],
+    ['Sedantes','Flumazenil: dosis','0,2 mg IV cada 60 s hasta 1 mg (máx. 3 mg/h). Su vida media es corta: vigilar la resedación.'],
+    ['Opioides','Fentanilo: potencia e inicio de acción','≈ 100 veces la morfina. Inicio IV en 1–2 min; un bolo dura 30–60 min.'],
+    ['Opioides','Remifentanilo: ¿por qué su efecto termina tan rápido?','Lo metabolizan esterasas plasmáticas y tisulares inespecíficas. Vida media contextual ≈ 3–4 min, sin importar la duración de la infusión.'],
+    ['Opioides','Remifentanilo: dos riesgos clásicos','Rigidez torácica con bolos rápidos e hiperalgesia inducida por opioides. Hay que planificar la analgesia antes de suspenderlo.'],
+    ['Opioides','Naloxona: dosis en depresión respiratoria postoperatoria','40 µg (0,04 mg) IV, titulados cada 2–3 min. Dura 30–90 min: puede haber renarcotización.'],
+    ['Relajantes','Succinilcolina: dosis para intubación rápida y efecto sobre el potasio','1–1,5 mg/kg IV. Eleva el K⁺ ≈ 0,5 mEq/L (mucho más en quemados, denervación o inmovilización prolongada).'],
+    ['Relajantes','Rocuronio para secuencia de intubación rápida','1,2 mg/kg IV. Reversión inmediata con sugammadex 16 mg/kg.'],
+    ['Relajantes','Sugammadex: dosis según el bloqueo','2 mg/kg con 2 respuestas al TOF; 4 mg/kg con 1–2 respuestas al PTC; 16 mg/kg para reversión inmediata.'],
+    ['Locales','Lidocaína: dosis máxima','4,5 mg/kg sin adrenalina (máx. 300 mg); 7 mg/kg con adrenalina (máx. 500 mg).'],
+    ['Locales','Bupivacaína: ¿por qué es más cardiotóxica?','Alta liposolubilidad y unión prolongada a los canales de sodio (“entra rápido, sale lento”). Arritmias y paro difíciles de revertir.'],
+    ['Inhalatorios','CAM aproximada en el adulto joven','Sevoflurano ≈ 2 %, desflurano ≈ 6 %, isoflurano ≈ 1,15 %. Disminuye con la edad, el embarazo y los opioides.']
+  ];
+  var temas=['Todos'];C.forEach(function(c){if(temas.indexOf(c[0])<0)temas.push(c[0])});
+  var mazo=C.slice(),i=0,tema='Todos',$=function(id){return document.getElementById(id)};
+  temas.forEach(function(t){var b=document.createElement('button');b.className='x-chip';b.textContent=t;b.onclick=function(){tema=t;mazo=C.filter(function(c){return t==='Todos'||c[0]===t});i=0;show()};$('fc-mazo').appendChild(b)});
+  function show(){[].forEach.call($('fc-mazo').children,function(b){b.setAttribute('aria-pressed',b.textContent===tema)});var c=mazo[i];$('fc').classList.remove('flip');$('fc-tag').textContent=$('fc-tag2').textContent=c[0];$('fc-q').textContent=c[1];setTimeout(function(){$('fc-a').textContent=c[2]},200);$('fc-n').textContent=(i+1)+' / '+mazo.length}
+  $('fc-in').onclick=function(){$('fc').classList.toggle('flip')};
+  $('fc-in').onkeydown=function(e){if(e.key===' '||e.key==='Enter'){e.preventDefault();$('fc').classList.toggle('flip')}};
+  $('fc-next').onclick=function(){i=(i+1)%mazo.length;show()};
+  $('fc-prev').onclick=function(){i=(i-1+mazo.length)%mazo.length;show()};
+  $('fc-mix').onclick=function(){for(var k=mazo.length-1;k>0;k--){var j=Math.floor(Math.random()*(k+1)),t=mazo[k];mazo[k]=mazo[j];mazo[j]=t}i=0;show()};
+  show();
+
+  var Q=[
+    ['¿Qué fármaco inhibe la 11β-hidroxilasa y puede causar supresión suprarrenal?',['Propofol','Etomidato','Ketamina','Midazolam'],1,'El etomidato inhibe la 11β-hidroxilasa; incluso una dosis única reduce transitoriamente la síntesis de cortisol.'],
+    ['¿Cuál es el mecanismo de acción de la ketamina?',['Agonista GABA-A','Agonista α2','Antagonista NMDA','Agonista μ'],2,'Antagonista no competitivo del receptor NMDA.'],
+    ['Paciente con 2 respuestas al TOF tras rocuronio. ¿Dosis de sugammadex?',['2 mg/kg','4 mg/kg','8 mg/kg','16 mg/kg'],0,'2 mg/kg con 2 respuestas al TOF; 4 mg/kg con bloqueo profundo (1–2 PTC); 16 mg/kg para reversión inmediata.'],
+    ['¿Por qué el efecto del remifentanilo desaparece en minutos tras horas de infusión?',['Metabolismo hepático rápido','Esterasas inespecíficas','Redistribución a grasa','Excreción renal'],1,'Esterasas plasmáticas y tisulares inespecíficas: vida media contextual de 3–4 min.'],
+    ['Dosis máxima de lidocaína con adrenalina en un adulto de 60 kg:',['270 mg','300 mg','420 mg','500 mg'],2,'7 mg/kg × 60 kg = 420 mg (por debajo del techo de 500 mg).'],
+    ['Tras revertir opioides con naloxona, el paciente vuelve a desaturar a los 60 min. ¿Por qué?',['Alergia a la naloxona','Renarcotización','Edema pulmonar','Hipoglucemia'],1,'La naloxona dura 30–90 min; el opioide puede durar más. Vigilar y repetir o infundir.'],
+    ['¿Qué efecto hemodinámico es típico de una carga rápida de dexmedetomidina?',['Taquicardia refleja','Bradicardia e hipotensión, o hipertensión transitoria','Vasoplejía grave','Ninguno'],1,'Por simpaticólisis (bradicardia, hipotensión) y vasoconstricción α2B periférica transitoria con cargas rápidas.'],
+    ['¿Cuál es la CAM aproximada del sevoflurano en el adulto joven?',['0,75 %','1,15 %','2 %','6 %'],2,'Sevoflurano ≈ 2 %; isoflurano ≈ 1,15 %; desflurano ≈ 6 %.'],
+    ['¿Qué paciente tiene más riesgo de hiperpotasemia grave con succinilcolina?',['Embarazada sana','Quemado de 10 días','Niño con amigdalitis','Paciente con hipertensión'],1,'Quemaduras, denervación e inmovilización prolongada aumentan los receptores extrasinápticos (a partir de 24–72 h).'],
+    ['¿Qué combinación define el síndrome de infusión de propofol?',['Hipoglucemia y bradicardia','Acidosis metabólica, rabdomiólisis e hiperpotasemia','Hipertermia y rigidez','Hiponatremia y convulsiones'],1,'Acidosis metabólica, rabdomiólisis, hiperpotasemia, hiperlipidemia y falla cardíaca.']
+  ];
+  var qi=0,ok=0;
+  function qr(){var box=$('qz');
+    if(qi>=Q.length){box.innerHTML='<div class="qz__score">'+ok+'/'+Q.length+'</div><p>'+(ok===Q.length?'¡Perfecto! Dominas el tema.':ok>=7?'Muy bien. Repasa las tarjetas de las que fallaste.':'Repasa las flashcards y vuelve a intentarlo.')+'</p><button class="x-btn" id="qz-r">Repetir</button>';$('qz-r').onclick=function(){qi=0;ok=0;qr()};return}
+    var x=Q[qi];box.innerHTML='<div class="qz__dots">'+Q.map(function(_,k){return '<i class="'+(k<=qi?'on':'')+'"></i>'}).join('')+'</div><p class="x-note" style="margin:0">Pregunta '+(qi+1)+' de '+Q.length+'</p><h3 style="margin:6px 0">'+x[0]+'</h3><div class="qz__opts">'+x[1].map(function(o,k){return '<button class="qz__opt" data-k="'+k+'"><span class="l">'+'ABCD'[k]+'</span><span>'+o+'</span></button>'}).join('')+'</div><div class="qz__exp" id="qz-e"></div>';
+    [].forEach.call(box.querySelectorAll('.qz__opt'),function(b){b.onclick=function(){var k=+b.dataset.k;[].forEach.call(box.querySelectorAll('.qz__opt'),function(z){z.disabled=true;if(+z.dataset.k===x[2])z.classList.add('right')});if(k!==x[2])b.classList.add('wrong');else ok++;var e=$('qz-e');e.classList.add('show');e.innerHTML='<p style="margin:0 0 10px"><b>'+(k===x[2]?'Correcto.':'Incorrecto.')+'</b> '+x[3]+'</p><button class="x-btn" id="qz-n">'+(qi===Q.length-1?'Ver resultado':'Siguiente ›')+'</button>';$('qz-n').onclick=function(){qi++;qr()}}})}
+  qr();
+})();
+</script>
