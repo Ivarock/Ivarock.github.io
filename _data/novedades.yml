@@ -1,0 +1,18 @@
+# Novedades que aparecen en el inicio (las más nuevas arriba).
+# tipo: Medicina, Fotografía, Sitio...
+- titulo: "Nuevo inicio, fondo aero y nombre: Bitácora de Ivarock"
+  url: "/"
+  tipo: "Sitio"
+  fecha: "Nov 2026"
+- titulo: "Galería 360°: 43 recorridos de Kuula"
+  url: "/fotografia/"
+  tipo: "Fotografía"
+  fecha: "Nov 2026"
+- titulo: "16 manuales de anestesiología de libre descarga"
+  url: "/manuales/"
+  tipo: "Medicina"
+  fecha: "Nov 2026"
+- titulo: "Presentación interactiva: Anestesia epidural"
+  url: "/presentaciones/anestesia-epidural/"
+  tipo: "Medicina"
+  fecha: "Nov 2026"
