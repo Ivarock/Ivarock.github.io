@@ -1,0 +1,47 @@
+# Fotos 360° de Kuula que aparecen en la galería de Fotografía.
+# Para agregar una nueva: copia un bloque y cambia id (código del enlace de Kuula),
+# cover (carpeta de la portada en files.kuula.io), titulo, lugar, anio y grupo.
+# Grupos: medicina, viajes, ciudad, familia
+- {id: L8Ffm, cover: 6ac6-db08-3760-a108, titulo: "Aula del edificio de posgrado", lugar: "Universidad Católica Santiago de Guayaquil", anio: 2026, grupo: medicina}
+- {id: L8Fpq, cover: 6ac6-d996-af52-b174, titulo: "Centro Quirúrgico", lugar: "Hospital General Enrique Ortega Durán", anio: 2026, grupo: medicina}
+- {id: L8fmZ, cover: 6ac5-6727-6f1a-2510, titulo: "Aula del posgrado de Anestesiología", lugar: "Universidad Católica Santiago de Guayaquil", anio: 2026, grupo: medicina}
+- {id: L8GjT, cover: 6ac5-5e02-4986-c184, titulo: "Foto 360", lugar: "Ecuador", anio: 2024, grupo: ciudad}
+- {id: L8GxF, cover: 6ac5-5d50-3385-9352, titulo: "Exámenes ocupacionales", lugar: "Guayaquil", anio: 2024, grupo: medicina}
+- {id: L8GLQ, cover: 6ac5-4e4f-e2b1-c229, titulo: "Entrenamiento en bicicleta", lugar: "Pedro Carbo · Isidro Ayora, Guayas", anio: 2024, grupo: familia}
+- {id: L8GLc, cover: 6ac5-4dda-a18f-7499, titulo: "Recorriendo el Malecón 2000", lugar: "Guayaquil", anio: "", grupo: ciudad}
+- {id: L8GhB, cover: 6ac5-4d64-f1c0-e840, titulo: "Salida familiar", lugar: "Guayaquil", anio: 2024, grupo: familia}
+- {id: L8GNZ, cover: 6ac5-4c9b-6df6-8133, titulo: "Pedaleando", lugar: "Comuna Jerusalem · Pedro Carbo", anio: 2024, grupo: familia}
+- {id: L8G48, cover: 6ac5-4b2b-29f0-8147, titulo: "Central Eólica Villonaco", lugar: "Loja", anio: 2024, grupo: viajes}
+- {id: L80tH, cover: 6ac5-497e-a842-b908, titulo: "Paseo familiar", lugar: "Loja", anio: 2024, grupo: viajes}
+- {id: L80rx, cover: 6ac5-48fc-6d68-6359, titulo: "Capilla Virgen del Cisne", lugar: "El Cisne · Loja", anio: 2024, grupo: viajes}
+- {id: L80Bj, cover: 6ac5-4838-7be6-6203, titulo: "Columpio del cielo · Teleférico", lugar: "Quito", anio: 2023, grupo: viajes}
+- {id: L80zV, cover: 6ac5-4612-0bde-4781, titulo: "Comuna El Jobo", lugar: "El Oro", anio: 2020, grupo: viajes}
+- {id: L80y3, cover: 6ac5-45b1-c42f-d160, titulo: "Balneario Laguna Azul", lugar: "Tena", anio: 2021, grupo: viajes}
+- {id: L80RF, cover: 6ac5-43ed-a71c-f187, titulo: "Puesta de sol desde la terraza", lugar: "Pedro Carbo", anio: 2022, grupo: viajes}
+- {id: L80Vx, cover: 6ac5-4004-0044-1158, titulo: "Jugando baloncesto", lugar: "Guayaquil", anio: "", grupo: familia}
+- {id: LH2SG, cover: 6a87-a048-d8fc-6157, titulo: "Foto 360", lugar: "Ecuador", anio: 2026, grupo: ciudad}
+- {id: LXZpx, cover: 6a3b-e81a-bd2a-1168, titulo: "Urbanización Colina del Sol", lugar: "Guayaquil", anio: "", grupo: ciudad}
+- {id: LJrld, cover: 6a37-4924-bc45-3998, titulo: "Urbanización Colina del Sol", lugar: "Guayaquil", anio: 2026, grupo: ciudad}
+- {id: LJrl1, cover: 6a37-47dc-3b4a-3863, titulo: "Hospital Abel Gilbert", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L7jVg, cover: 6979-9119-9d12-c745, titulo: "Residencia de Anestesiología HGGS", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L4j47, cover: 696f-1124-2d98-6192, titulo: "Universidad Católica Santiago de Guayaquil", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L4VQ3, cover: 696f-0b9f-504a-9991, titulo: "Quirófano", lugar: "", anio: "", grupo: medicina}
+- {id: L4C7k, cover: 696e-a203-d3ea-3160, titulo: "Guayaquil", lugar: "Guayaquil", anio: "", grupo: ciudad}
+- {id: L4Zqz, cover: 696a-fe92-406f-e192, titulo: "Avenida Machala", lugar: "Guayaquil", anio: "", grupo: ciudad}
+- {id: L4ZqV, cover: 696a-fe5d-d47d-6162, titulo: "Votaciones 2025", lugar: "Santa Rosa · El Oro", anio: 2025, grupo: familia}
+- {id: L4ZqZ, cover: 696a-fd9a-8b84-4298, titulo: "Día de elecciones · Consulta popular", lugar: "Santa Rosa · El Oro", anio: 2025, grupo: familia}
+- {id: L4ZqX, cover: 696a-fd3e-8446-c809, titulo: "Anestesiología", lugar: "", anio: 2025, grupo: medicina}
+- {id: L4ZqF, cover: 696a-fc12-176e-8531, titulo: "Fin de año 2025", lugar: "Santa Rosa · El Oro", anio: 2025, grupo: familia}
+- {id: L4Zqv, cover: 696a-fb9b-d5e1-c643, titulo: "Fin de año 2025", lugar: "Santa Rosa · El Oro", anio: 2025, grupo: familia}
+- {id: L4Zqh, cover: 696a-fadd-8474-d550, titulo: "Fin de año 2025", lugar: "Santa Rosa · El Oro", anio: 2025, grupo: familia}
+- {id: L4Zks, cover: 696a-f9d9-9271-7800, titulo: "Consulta preanestésica", lugar: "", anio: "", grupo: medicina}
+- {id: L4ZkX, cover: 696a-f790-ba1f-2148, titulo: "Parqueadero Hospital General Guasmo Sur", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L4ZkF, cover: 696a-f70f-3a00-9211, titulo: "Esperando procedimiento", lugar: "", anio: "", grupo: medicina}
+- {id: L4ZPL, cover: 696a-ef2f-7f96-1162, titulo: "Centro Obstétrico Hospital General Guasmo Sur", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L4Zpn, cover: 696a-e5c4-6ec7-a182, titulo: "Saliendo de clases", lugar: "", anio: "", grupo: medicina}
+- {id: L4Zpd, cover: 696a-e4e3-61f7-7120, titulo: "Ascensor del edificio de posgrado", lugar: "Universidad Católica Santiago de Guayaquil", anio: "", grupo: medicina}
+- {id: L4Zpv, cover: 696a-e452-4e45-2772, titulo: "Saliendo de clases · Posgrado de Anestesiología", lugar: "Universidad Católica Santiago de Guayaquil", anio: "", grupo: medicina}
+- {id: L4Zms, cover: 696a-e0af-6382-b202, titulo: "Gato Félix", lugar: "Guayaquil", anio: "", grupo: ciudad}
+- {id: L4ZmF, cover: 696a-df6c-b069-f126, titulo: "Ivanov Cruz y Marianita Peñaherrera", lugar: "Guayaquil", anio: 2026, grupo: familia}
+- {id: L491r, cover: 6969-9e2b-f420-3491, titulo: "Universidad Católica Santiago de Guayaquil", lugar: "Guayaquil", anio: "", grupo: medicina}
+- {id: L4fhB, cover: 6968-4fd3-e5b4-b731, titulo: "Urbanización Colina del Sol", lugar: "Guayaquil", anio: 2026, grupo: ciudad}
