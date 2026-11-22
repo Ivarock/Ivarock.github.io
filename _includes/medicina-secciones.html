@@ -1,4 +1,4 @@
-<!-- Subsecciones destacadas de Medicina: Presentaciones y Manuales -->
+<!-- Subsecciones destacadas de Medicina: Presentaciones, Manuales y Artículos -->
 <style>
 .msec{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin:4px 0 40px}
 .msec__card{position:relative;display:flex;gap:16px;align-items:center;padding:18px;border-radius:22px;color:var(--ink);font-weight:400;background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.68) 50%,rgba(228,246,255,.62) 51%,rgba(245,252,255,.85) 100%);border:1px solid #fff;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s}
@@ -15,15 +15,24 @@
 .msec__body p{margin:0 0 10px;font-size:.92rem;color:var(--ink-soft)}
 .msec__go{display:inline-block;font:700 .84rem var(--font-sans);color:#fff;padding:6px 16px;border-radius:999px;border:1px solid #0b86c4;background:linear-gradient(180deg,#8fe0ff 0%,#36b8f2 48%,#129ddf 52%,#3cc0f5 100%);box-shadow:0 3px 8px rgba(10,110,180,.35),inset 0 1px 0 rgba(255,255,255,.8);text-shadow:0 1px 1px rgba(0,70,120,.5)}
 .msec__card--green .msec__go{border-color:#2f8f22;background:linear-gradient(180deg,#b8f08f 0%,#6ccc3f 48%,#4fb825 52%,#79d64c 100%);box-shadow:0 3px 8px rgba(47,143,34,.35),inset 0 1px 0 rgba(255,255,255,.8)}
+.msec__art--paper{background:#1B2F4E;position:relative;padding:0 10px 0 18px;align-content:center;justify-items:start}
+.msec__art--paper::before{content:"";position:absolute;left:0;top:0;bottom:0;width:7px;background:#B5323C}
+.msec__art--paper small{color:#e9b4b9;font:700 8.5px/1 sans-serif;letter-spacing:.22em}
+.msec__art--paper b{color:#fff;font:700 15px/1.15 Georgia,serif;margin-top:5px}
+.msec__card--navy .msec__go{border-color:#1B2F4E;background:linear-gradient(180deg,#5b7bb0 0%,#2c4a7a 48%,#1B2F4E 52%,#34558a 100%);box-shadow:0 3px 8px rgba(27,47,78,.35),inset 0 1px 0 rgba(255,255,255,.5)}
 @media (max-width:420px){.msec__art{width:84px;height:84px}.msec__art--books i{transform:scale(.8)}}
 </style>
 <nav class="msec" aria-label="Subsecciones de Medicina">
   <a class="msec__card" href="{{ '/presentaciones/' | relative_url }}">
     <span class="msec__art msec__art--neon"><span>ANESTESIA<br>EPIDURAL</span></span>
-    <div class="msec__body"><h2>Presentaciones</h2><p>Clases interactivas de anestesiología con simuladores, calculadoras, casos clínicos y quiz.</p><span class="msec__go">Ver presentaciones →</span></div>
+    <div class="msec__body"><h2>Presentaciones</h2><p>Clases interactivas de anestesiología y cirugía con simuladores, calculadoras, casos clínicos y quiz.</p><span class="msec__go">Ver presentaciones →</span></div>
   </a>
   <a class="msec__card msec__card--green" href="{{ '/manuales/' | relative_url }}">
     <span class="msec__art msec__art--books"><i></i><i></i><i></i></span>
     <div class="msec__body"><h2>Manuales</h2><p>16 compendios y manuales de estudio, más de 900 páginas para leer en línea o descargar gratis.</p><span class="msec__go">Ver manuales →</span></div>
+  </a>
+  <a class="msec__card msec__card--navy" href="{{ '/articulos/' | relative_url }}">
+    <span class="msec__art msec__art--paper"><small>ARTÍCULO</small><b>Oxitocina en la cesárea</b></span>
+    <div class="msec__body"><h2>Artículos</h2><p>Artículos de opinión sobre anestesia obstétrica y seguridad, para leer en línea o guardar en PDF.</p><span class="msec__go">Ver artículos →</span></div>
   </a>
 </nav>
