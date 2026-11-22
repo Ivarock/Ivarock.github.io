@@ -7,7 +7,7 @@ layout: default
   <aside class="inicio__izq">
     <div class="contador">
       <span class="contador__titulo">Visitantes</span>
-      <div class="contador__num" id="contador-num" aria-live="polite"><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span></div>
+      <div class="contador__num"><img src="https://hits.sh/ivarock.github.io.svg?style=for-the-badge&amp;label=visitas&amp;color=2f9e2a&amp;labelColor=1789d0" alt="Contador de visitas" height="28"></div>
       <span class="contador__pie">¡Gracias por pasar!</span>
     </div>
   </aside>
@@ -94,28 +94,3 @@ layout: default
 </nav>
 {% endif %}
 
-<script>
-(function () {
-  var el = document.getElementById('contador-num');
-  if (!el) return;
-  var base = 'https://abacus.jasoncameron.dev/';
-  var clave = 'ivarock-github-io/visitas';
-  var visto = false;
-  try { visto = sessionStorage.getItem('ivk-visto') === '1'; } catch (e) {}
-  function pinta(n) {
-    var s = String(n);
-    while (s.length < 6) s = '0' + s;
-    el.innerHTML = s.split('').map(function (d) { return '<span>' + d + '</span>'; }).join('');
-  }
-  fetch(base + (visto ? 'get/' : 'hit/') + clave)
-    .then(function (r) { return r.json(); })
-    .then(function (j) {
-      if (typeof j.value !== 'number') throw new Error('sin valor');
-      pinta(j.value);
-      try { sessionStorage.setItem('ivk-visto', '1'); } catch (e) {}
-    })
-    .catch(function () {
-      el.innerHTML = '<img src="https://hits.sh/ivarock.github.io.svg?label=visitas" alt="contador de visitas">';
-    });
-})();
-</script>
