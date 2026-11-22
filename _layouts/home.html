@@ -7,8 +7,8 @@ layout: default
   <aside class="inicio__izq">
     <div class="contador">
       <span class="contador__titulo">Visitantes</span>
-      <div class="contador__num"><img src="https://hits.sh/ivarock.github.io.svg?style=for-the-badge&amp;label=visitas&amp;color=2f9e2a&amp;labelColor=1789d0" alt="Contador de visitas" height="28"></div>
-      <span class="contador__pie">¡Gracias por pasar!</span>
+      <div class="contador__num" id="contador-num"></div>
+      <span class="contador__pie" id="contador-pie">hoy / total · ¡gracias por pasar!</span>
     </div>
   </aside>
 
@@ -37,6 +37,27 @@ layout: default
         </li>
         {% endfor %}
       </ul>
+    </div>
+  
+    {% assign mes = site.data.destacado %}
+    {% if mes and mes.titulo %}
+    <div class="mes">
+      <small>{{ mes.etiqueta | default: "Página del mes" }}</small>
+      <h3>{{ mes.titulo }}</h3>
+      <p>{{ mes.texto }}</p>
+      <a class="x-btn" href="{{ mes.url | relative_url }}">{{ mes.boton | default: "Ver ahora" }} →</a>
+    </div>
+    {% endif %}
+
+    <div class="x-card suscr">
+      <h2 style="font-size:1.15rem">Recibe las novedades</h2>
+      <p class="x-note" style="margin:0">Entérate cuando suba un artículo, una presentación o un manual nuevo.</p>
+      <div class="x-chips">
+        {% if site.data.sitio.whatsapp_canal and site.data.sitio.whatsapp_canal != "" %}<a class="x-btn x-btn--green" href="{{ site.data.sitio.whatsapp_canal }}" target="_blank" rel="noopener">Canal de WhatsApp</a>{% endif %}
+        <a class="x-btn" href="https://www.instagram.com/ivarock/" target="_blank" rel="noopener">Sígueme en Instagram</a>
+        <a class="x-btn x-btn--ghost" href="{{ '/feed.xml' | relative_url }}">RSS</a>
+        <a class="x-btn x-btn--ghost" href="mailto:xavierman18@hotmail.com?subject=Quiero%20recibir%20las%20novedades%20de%20la%20Bit%C3%A1cora%20de%20Ivarock">Avísame por correo</a>
+      </div>
     </div>
   </section>
 
@@ -94,3 +115,16 @@ layout: default
 </nav>
 {% endif %}
 
+<script>
+(function () {
+  var el = document.getElementById('contador-num'), pie = document.getElementById('contador-pie');
+  if (!el) return;
+  var yo = false; try { yo = localStorage.getItem('ivk-yo') === '1'; } catch (e) {}
+  if (yo) {
+    el.innerHTML = '<a class="x-btn x-btn--ghost" style="font-size:.8rem;padding:6px 12px" href="https://hits.sh/ivarock.github.io/" target="_blank" rel="noopener">Ver estadísticas</a>';
+    pie.textContent = 'Modo autor: tus visitas no se cuentan';
+  } else {
+    el.innerHTML = '<img src="https://hits.sh/ivarock.github.io.svg?view=today-total&amp;style=for-the-badge&amp;label=visitas&amp;color=2f9e2a&amp;labelColor=1789d0" alt="Contador de visitas: hoy / total" height="28">';
+  }
+})();
+</script>

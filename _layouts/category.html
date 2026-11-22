@@ -9,7 +9,7 @@ layout: default
 </section>
 
 {% if page.secciones_medicina %}{% include medicina-secciones.html %}{% endif %}
-{% if page.galeria_360 %}{% include galeria-360.html %}{% endif %}
+{% if page.galeria_360 %}{% include galeria-360.html %}{% include mapa-360.html %}{% endif %}
 
 {% assign section_posts = site.posts | where: "category", page.category %}
 

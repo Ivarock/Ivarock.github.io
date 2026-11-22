@@ -12,7 +12,12 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
+  <meta name="ivk-base" content="{{ site.baseurl }}">
+  <script>try{if(localStorage.getItem('ivk-tema')==='dark')document.documentElement.classList.add('dark')}catch(e){}</script>
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+  <link rel="stylesheet" href="{{ '/assets/css/extras.css' | relative_url }}">
+  <script src="{{ '/assets/js/extras.js' | relative_url }}" defer></script>
+  {% if site.data.sitio.goatcounter and site.data.sitio.goatcounter != "" %}<script data-goatcounter="https://{{ site.data.sitio.goatcounter }}.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>{% endif %}
   {% feed_meta %}
   {% seo %}
   {% unless page.image %}
@@ -49,7 +54,7 @@
 
   <footer class="site-footer">
     <div class="wrap">
-      <p>© {{ site.time | date: '%Y' }} {{ site.author }}. Hecho con Jekyll + GitHub Pages. · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
+      <p>© {{ site.time | date: '%Y' }} {{ site.author }}. Hecho con Jekyll + GitHub Pages. · <a href="{{ '/buscar/' | relative_url }}">Buscar</a> · <a href="{{ '/glosario/' | relative_url }}">Glosario</a> · <a href="{{ '/apps/' | relative_url }}">Mis apps</a> · <a href="{{ '/feed.xml' | relative_url }}">RSS</a></p>
     </div>
   </footer>
 
