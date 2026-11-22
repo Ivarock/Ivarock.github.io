@@ -1,0 +1,44 @@
+<!-- Mapa de las fotos 360° (Leaflet + OpenStreetMap). Coordenadas aproximadas por lugar. -->
+<section class="m360" id="mapa-360">
+  <h2>Mapa de mis fotos 360°</h2>
+  <div class="m360__map" id="m360map" role="region" aria-label="Mapa con la ubicación aproximada de las fotos 360"></div>
+  <p class="x-note" style="color:#fff;text-shadow:0 1px 3px rgba(10,90,150,.6)">Ubicaciones aproximadas por ciudad o lugar. Toca un punto y elige una foto para abrirla.</p>
+</section>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="">
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin=""></script>
+<script>
+(function(){
+  var FOTOS={{ site.data.kuula | jsonify }};
+  var C={
+    'Guayaquil':[-2.1894,-79.8891],
+    'Universidad Católica Santiago de Guayaquil':[-2.1820,-79.9040],
+    'Hospital General Enrique Ortega Durán':[-2.1714,-79.8215],
+    'Hospital HEOM, Durán':[-2.1714,-79.8215],
+    'Pedro Carbo':[-1.8217,-80.2336],
+    'Comuna Jerusalem · Pedro Carbo':[-1.8000,-80.2100],
+    'Pedro Carbo · Isidro Ayora, Guayas':[-1.8833,-80.1500],
+    'Loja':[-3.9931,-79.2042],
+    'El Cisne · Loja':[-3.8546,-79.4253],
+    'Santa Rosa · El Oro':[-3.4489,-79.9597],
+    'El Oro':[-3.2581,-79.9554],
+    'Quito':[-0.1807,-78.4678],
+    'Tena':[-0.9938,-77.8129]
+  };
+  function go(){
+    if(!window.L){return}
+    var map=L.map('m360map',{scrollWheelZoom:false}).setView([-1.9,-79.4],7);
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{maxZoom:18,attribution:'&copy; OpenStreetMap'}).addTo(map);
+    var grupos={},pts=[];
+    FOTOS.forEach(function(f){if(C[f.lugar]){(grupos[f.lugar]=grupos[f.lugar]||[]).push(f)}});
+    var icon=L.divIcon({className:'',html:'<div style="width:26px;height:26px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff 0 18%,#36b8f2 45%,#0a6aa8 100%);border:2px solid #fff;box-shadow:0 3px 8px rgba(10,90,150,.5)"></div>',iconSize:[26,26],iconAnchor:[13,13]});
+    Object.keys(grupos).forEach(function(l){
+      var g=grupos[l],div=document.createElement('div');div.className='m360__pop';
+      div.innerHTML='<b>'+l+' · '+g.length+' foto'+(g.length>1?'s':'')+'</b>';
+      g.forEach(function(f){var b=document.createElement('button');b.textContent='▸ '+f.titulo;b.onclick=function(){var it=document.querySelector('.g360__item[data-id="'+f.id+'"]');if(it){it.click()}else{window.open('https://kuula.co/post/'+f.id,'_blank')}};div.appendChild(b)});
+      L.marker(C[l],{icon:icon,title:l}).addTo(map).bindPopup(div);pts.push(C[l]);
+    });
+    if(pts.length)map.fitBounds(pts,{padding:[30,30]});
+  }
+  if(window.L)go();else window.addEventListener('load',go);
+})();
+</script>

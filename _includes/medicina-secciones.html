@@ -20,6 +20,9 @@
 .msec__art--paper small{color:#e9b4b9;font:700 8.5px/1 sans-serif;letter-spacing:.22em}
 .msec__art--paper b{color:#fff;font:700 15px/1.15 Georgia,serif;margin-top:5px}
 .msec__card--navy .msec__go{border-color:#1B2F4E;background:linear-gradient(180deg,#5b7bb0 0%,#2c4a7a 48%,#1B2F4E 52%,#34558a 100%);box-shadow:0 3px 8px rgba(27,47,78,.35),inset 0 1px 0 rgba(255,255,255,.5)}
+.msec__art--icon{background:linear-gradient(160deg,#e9f8ff,#bfeaff)}
+.msec__art--icon svg{width:58px;height:58px}
+.msec--tools .msec__art{width:84px;height:84px}
 @media (max-width:420px){.msec__art{width:84px;height:84px}.msec__art--books i{transform:scale(.8)}}
 </style>
 <nav class="msec" aria-label="Subsecciones de Medicina">
@@ -34,5 +37,28 @@
   <a class="msec__card msec__card--navy" href="{{ '/articulos/' | relative_url }}">
     <span class="msec__art msec__art--paper"><small>ARTÍCULO</small><b>Oxitocina en la cesárea</b></span>
     <div class="msec__body"><h2>Artículos</h2><p>Artículos de opinión sobre anestesia obstétrica y seguridad, para leer en línea o guardar en PDF.</p><span class="msec__go">Ver artículos →</span></div>
+  </a>
+</nav>
+<h2 style="color:#fff;text-shadow:0 2px 0 rgba(10,90,150,.35),0 6px 16px rgba(10,90,150,.35);margin:10px 0 14px">Herramientas para estudiar y trabajar</h2>
+<nav class="msec msec--tools" aria-label="Herramientas de Medicina">
+  <a class="msec__card" href="{{ '/calculadoras/' | relative_url }}">
+    <span class="msec__art msec__art--icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M8 6h8M8 10h2M12 10h0M16 10h0M8 14h2M12 14h0M16 14h0M8 18h2M12 18h0M16 18h0"/></svg></span>
+    <div class="msec__body"><h2>Calculadoras</h2><p>Anestésicos locales, emulsión lipídica, peso ideal, sangrado permisible, líquidos y ASA.</p><span class="msec__go">Calcular →</span></div>
+  </a>
+  <a class="msec__card msec__card--green" href="{{ '/estudio/' | relative_url }}">
+    <span class="msec__art msec__art--icon"><svg viewBox="0 0 24 24" fill="none" stroke="#2f8f22" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 2h12a2 2 0 0 1 2 2v12"/><path d="M8 13h4"/></svg></span>
+    <div class="msec__body"><h2>Flashcards y quiz</h2><p>Farmacología anestésica en tarjetas de repaso y autoevaluación.</p><span class="msec__go">Estudiar →</span></div>
+  </a>
+  <a class="msec__card" href="{{ '/casos/' | relative_url }}">
+    <span class="msec__art msec__art--icon"><svg viewBox="0 0 24 24" fill="none" stroke="#b8452f" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6v4H9z"/><path d="M5 5h4M15 5h4v16H5V5"/><path d="M9 12h6M12 9v6"/></svg></span>
+    <div class="msec__body"><h2>Casos clínicos</h2><p>Decide paso a paso y aprende de cada respuesta.</p><span class="msec__go">Resolver →</span></div>
+  </a>
+  <a class="msec__card msec__card--navy" href="{{ '/glosario/' | relative_url }}">
+    <span class="msec__art msec__art--icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0a6aa8" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12a4 4 0 0 1 4 4v12H8a4 4 0 0 1-4-4z"/><path d="M8 9h8M8 13h6"/></svg></span>
+    <div class="msec__body"><h2>Glosario</h2><p>Los términos de anestesiología explicados en pocas palabras.</p><span class="msec__go">Consultar →</span></div>
+  </a>
+  <a class="msec__card" href="{{ '/apps/' | relative_url }}">
+    <span class="msec__art msec__art--icon"><svg viewBox="0 0 24 24" fill="none" stroke="#6a3fc4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="7" y="2" width="10" height="20" rx="2"/><path d="M11 18h2"/></svg></span>
+    <div class="msec__body"><h2>Mis apps</h2><p>AnestePro y AnesteSed: calculadoras para el quirófano en tu celular.</p><span class="msec__go">Ver apps →</span></div>
   </a>
 </nav>
