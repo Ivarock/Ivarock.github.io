@@ -119,7 +119,7 @@ layout: default
 (function () {
   var el = document.getElementById('contador-num'), pie = document.getElementById('contador-pie');
   if (!el) return;
-  var yo = false; try { yo = localStorage.getItem('ivk-yo') === '1'; } catch (e) {}
+  var yo = /[?&]soy-yo\b/.test(location.search); try { if (/[?&]no-soy-yo\b/.test(location.search)) yo = false; else if (localStorage.getItem('ivk-yo') === '1') yo = true; } catch (e) {}
   if (yo) {
     el.innerHTML = '<a class="x-btn x-btn--ghost" style="font-size:.8rem;padding:6px 12px" href="https://hits.sh/ivarock.github.io/" target="_blank" rel="noopener">Ver estadísticas</a>';
     pie.textContent = 'Modo autor: tus visitas no se cuentan';
