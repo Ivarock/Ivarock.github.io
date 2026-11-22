@@ -2,6 +2,10 @@
 # Para agregar una nueva: copia un bloque y cambia id (código del enlace de Kuula),
 # cover (carpeta de la portada en files.kuula.io), titulo, lugar, anio y grupo.
 # Grupos: medicina, viajes, ciudad, familia
+- {id: LjD8d, cover: 6b03-119f-9f30-4211, titulo: "Museo del Cacao", lugar: "Guayaquil", anio: 2026, grupo: ciudad}
+- {id: LjD81, cover: 6b03-10d8-576d-4105, titulo: "Museo del Cacao II", lugar: "Guayaquil", anio: 2026, grupo: ciudad}
+- {id: LjD8l, cover: 6b03-100d-a7f3-c187, titulo: "Quirófano", lugar: "Hospital HEOM, Durán", anio: 2026, grupo: medicina}
+- {id: LjD8N, cover: 6b03-0f4a-c17b-6299, titulo: "Desayunando con Iris en IHOP", lugar: "IHOP", anio: 2026, grupo: familia}
 - {id: L8Ffm, cover: 6ac6-db08-3760-a108, titulo: "Aula del edificio de posgrado", lugar: "Universidad Católica Santiago de Guayaquil", anio: 2026, grupo: medicina}
 - {id: L8Fpq, cover: 6ac6-d996-af52-b174, titulo: "Centro Quirúrgico", lugar: "Hospital General Enrique Ortega Durán", anio: 2026, grupo: medicina}
 - {id: L8fmZ, cover: 6ac5-6727-6f1a-2510, titulo: "Aula del posgrado de Anestesiología", lugar: "Universidad Católica Santiago de Guayaquil", anio: 2026, grupo: medicina}
