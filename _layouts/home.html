@@ -2,12 +2,64 @@
 layout: default
 ---
 
-<section class="hero">
-  <h1 class="hero__title">{{ site.tagline }}</h1>
-  {% if site.description %}
-  <p class="hero__desc">{{ site.description }}</p>
-  {% endif %}
-</section>
+<div class="inicio">
+
+  <aside class="inicio__izq">
+    <div class="contador">
+      <span class="contador__titulo">Visitantes</span>
+      <div class="contador__num" id="contador-num" aria-live="polite"><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span><span>·</span></div>
+      <span class="contador__pie">¡Gracias por pasar!</span>
+    </div>
+  </aside>
+
+  <section class="inicio__centro">
+    <div class="bienvenida">
+      <h1 class="bienvenida__titulo">¡Bienvenido a la Bitácora de Ivarock!</h1>
+      <p>Este es mi rincón en internet. Soy Ivanov, médico residente de Anestesiología y Reanimación, y aquí voy guardando lo que me gusta compartir: relatos del blog, fotos y recorridos en 360°, y material de medicina —apuntes, presentaciones y manuales de anestesiología— de libre descarga.</p>
+      <p>Ponte cómodo, explora las secciones y vuelve de vez en cuando: siempre hay algo nuevo.</p>
+    </div>
+
+    <div class="novedades">
+      <h2 class="novedades__titulo">Novedades</h2>
+      <ul class="novedades__lista">
+        {% for post in site.posts limit:2 %}
+        <li class="novedad">
+          <span class="novedad__tipo novedad__tipo--blog">Blog</span>
+          <a class="novedad__enlace" href="{{ post.url | relative_url }}">{{ post.title }}</a>
+          <span class="novedad__fecha">{{ post.date | date: "%d/%m/%Y" }}</span>
+        </li>
+        {% endfor %}
+        {% for n in site.data.novedades %}
+        <li class="novedad">
+          <span class="novedad__tipo novedad__tipo--{{ n.tipo | downcase }}">{{ n.tipo }}</span>
+          <a class="novedad__enlace" href="{{ n.url | relative_url }}">{{ n.titulo }}</a>
+          <span class="novedad__fecha">{{ n.fecha }}</span>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+  </section>
+
+  <aside class="inicio__der">
+    <div class="redes">
+      <img class="redes__foto" src="{{ '/assets/images/ivanov.jpg' | relative_url }}" alt="Ivanov" width="120" height="120">
+      <span class="redes__nombre">@ivarock</span>
+      <a class="redes__btn redes__btn--ig" href="https://www.instagram.com/ivarock/" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="17.3" cy="6.7" r="1.2" fill="currentColor"/></svg>
+        Instagram
+      </a>
+      <a class="redes__btn redes__btn--lt" href="https://linktr.ee/Ivarock" target="_blank" rel="noopener">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><path d="M10 14a4 4 0 0 0 5.7 0l3-3a4 4 0 0 0-5.7-5.7l-1 1M14 10a4 4 0 0 0-5.7 0l-3 3a4 4 0 0 0 5.7 5.7l1-1" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        Todos mis enlaces
+      </a>
+      <a class="redes__btn redes__btn--mail" href="mailto:xavierman18@hotmail.com">
+        <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 7l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"/></svg>
+        Escríbeme
+      </a>
+    </div>
+  </aside>
+
+</div>
 
 <nav class="section-nav" style="grid-template-columns:repeat(auto-fit,minmax(170px,1fr))">
   <a class="section-nav__item section-nav__item--blog" href="{{ '/blog/' | relative_url }}">
@@ -41,3 +93,29 @@ layout: default
   {% endif %}
 </nav>
 {% endif %}
+
+<script>
+(function () {
+  var el = document.getElementById('contador-num');
+  if (!el) return;
+  var base = 'https://abacus.jasoncameron.dev/';
+  var clave = 'ivarock-github-io/visitas';
+  var visto = false;
+  try { visto = sessionStorage.getItem('ivk-visto') === '1'; } catch (e) {}
+  function pinta(n) {
+    var s = String(n);
+    while (s.length < 6) s = '0' + s;
+    el.innerHTML = s.split('').map(function (d) { return '<span>' + d + '</span>'; }).join('');
+  }
+  fetch(base + (visto ? 'get/' : 'hit/') + clave)
+    .then(function (r) { return r.json(); })
+    .then(function (j) {
+      if (typeof j.value !== 'number') throw new Error('sin valor');
+      pinta(j.value);
+      try { sessionStorage.setItem('ivk-visto', '1'); } catch (e) {}
+    })
+    .catch(function () {
+      el.innerHTML = '<img src="https://hits.sh/ivarock.github.io.svg?label=visitas" alt="contador de visitas">';
+    });
+})();
+</script>
