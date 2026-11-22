@@ -3,125 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Presentaciones · Ivarock</title>
+<title>Presentaciones · Bitácora de Ivanov</title>
 <meta name="description" content="Presentaciones interactivas de anestesiología del Dr. Ivanov Cruz Correa.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700;900&family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌎</text></svg>">
+<link rel="stylesheet" href="../assets/css/style.css">
 <style>
-/* Galería de presentaciones con la misma atmósfera neón: portada, tarjetas con miniatura dibujada en CSS. */
-:root{
-  --bg:#05040A; --surface:rgba(16,11,24,.74); --ink:#F4EEF3; --muted:#B9ABBF; --line:rgba(255,70,95,.24);
-  --accent:#FF3B4F; --hot:#4FE3FF;
-  --display:"Cinzel", Georgia, serif; --body:"Montserrat", "Segoe UI", system-ui, sans-serif;
-  --glow:0 0 6px rgba(255,59,79,.9),0 0 18px rgba(255,59,79,.65),0 0 42px rgba(255,40,60,.4);
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html,body{margin:0;min-height:100%}
-body{background:var(--bg);color:var(--ink);font-family:var(--body);line-height:1.55}
-#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0}
-.crt{position:fixed;inset:0;pointer-events:none;z-index:3;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.03) 0 1px,transparent 1px 3px)}
-.vig{position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 40%,transparent 35%,rgba(0,0,0,.6) 80%,rgba(0,0,0,.92))}
-header,main,footer{position:relative;z-index:2}
-header{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:16px 22px}
-header a{color:var(--muted);text-decoration:none;font-size:13px;letter-spacing:.14em;text-transform:uppercase}
-header a:hover{color:var(--hot)}
-header .brand{font-family:var(--display);font-weight:900;letter-spacing:.2em;color:#FF5466;text-shadow:var(--glow);font-size:16px}
-main{max-width:1100px;margin:0 auto;padding:30px 20px 80px}
-.hero{text-align:center;padding:40px 0 50px}
-.pre{letter-spacing:.5em;font-size:14px;font-weight:600;padding-left:.5em}
-h1{font-family:var(--display);font-weight:900;text-transform:uppercase;color:#FF4559;text-shadow:var(--glow);font-size:clamp(40px,8vw,92px);line-height:1;margin:18px 0 0;letter-spacing:.03em;animation:neonOn 2s .2s both}
-.bar{width:min(520px,80%);height:4px;margin:22px auto 0;background:var(--accent);border-radius:3px;box-shadow:0 0 10px var(--accent),0 0 30px rgba(255,59,79,.7)}
-.lead{color:var(--muted);max-width:60ch;margin:22px auto 0;font-size:17px}
-@keyframes neonOn{0%{opacity:0;text-shadow:none}12%{opacity:.9}16%{opacity:.15}24%{opacity:1;text-shadow:var(--glow)}28%{opacity:.3}36%,100%{opacity:1;text-shadow:var(--glow)}}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
-.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:26px}
-.f{border:1px solid rgba(255,255,255,.22);background:rgba(10,8,16,.5);color:var(--ink);border-radius:999px;padding:7px 16px;font:600 14px var(--body);cursor:pointer}
-.f[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);box-shadow:0 0 16px rgba(255,59,79,.6)}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:20px}
-.card{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;backdrop-filter:blur(7px);box-shadow:0 18px 50px rgba(0,0,0,.55);transition:transform .25s,box-shadow .25s,border-color .25s;animation:rise .8s both}
-.card:nth-child(2){animation-delay:.12s}.card:nth-child(3){animation-delay:.24s}
-a.card:hover{transform:translateY(-6px);border-color:var(--accent);box-shadow:0 0 30px rgba(255,59,79,.45),0 18px 50px rgba(0,0,0,.6)}
-.thumb{aspect-ratio:16/9;position:relative;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 70%,rgba(255,45,70,.25),transparent 60%),radial-gradient(ellipse at 20% 20%,rgba(80,120,255,.18),transparent 55%),#0a0612}
-.thumb::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.04) 0 1px,transparent 1px 3px)}
-.thumb .t{text-align:center;font-family:var(--display);font-weight:900;text-transform:uppercase;color:#FF4559;text-shadow:var(--glow);line-height:.95}
-.thumb .t small{display:block;font-size:13px;letter-spacing:.2em;margin-bottom:6px}
-.thumb .t span{display:block;font-size:40px;letter-spacing:.03em}
-.thumb .ln{width:70%;height:3px;background:var(--accent);box-shadow:0 0 10px var(--accent);margin:10px auto 0;border-radius:2px}
-.thumb.soon{filter:grayscale(.6) brightness(.7)}
-.body{padding:16px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
-.tag{display:flex;gap:6px;flex-wrap:wrap}
-.tag span{font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--hot);border:1px solid rgba(79,227,255,.4);border-radius:999px;padding:3px 9px}
-.card h2{font-family:var(--display);font-weight:700;font-size:21px;margin:0;color:#fff}
-.card p{margin:0;color:var(--muted);font-size:14.5px}
-.go{margin-top:auto;padding-top:8px;font-weight:700;color:#FF6273;text-shadow:0 0 8px rgba(255,59,79,.6);letter-spacing:.06em}
-footer{text-align:center;color:var(--muted);font-size:13px;padding:0 20px 40px}
-footer a{color:var(--hot)}
-:focus-visible{outline:2px solid var(--hot);outline-offset:3px;border-radius:10px}
-@media (prefers-reduced-motion: reduce){*{animation:none!important;transition:none!important}}
+/* Galería de presentaciones · Frutiger Aero; cada miniatura anticipa el estilo propio de la presentación */
+.aero-hero{text-align:center;padding:50px 0 26px}
+.aero-hero .pre{display:inline-block;font:800 .78rem var(--font-head);letter-spacing:.22em;text-transform:uppercase;color:var(--leaf-deep);background:linear-gradient(180deg,#f4ffe9 0%,#ddf7c8 50%,#c8efa9 51%,#e6fbd5 100%);border:1px solid rgba(92,194,58,.5);border-radius:999px;padding:5px 14px}
+.aero-hero h1{font-size:clamp(2.4rem,7vw,4rem);font-weight:800;margin:14px 0 0;color:#fff;text-shadow:0 2px 0 rgba(10,90,150,.35),0 8px 24px rgba(10,90,150,.4)}
+.aero-hero p{max-width:60ch;margin:16px auto 0;background:rgba(255,255,255,.62);border:1px solid #fff;border-radius:16px;padding:12px 18px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px)}
+.filters{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:8px 0 26px}
+.f{font:700 .9rem var(--font-sans);color:var(--ink);cursor:pointer;border-radius:999px;padding:7px 16px;border:1px solid rgba(23,162,230,.45);background:linear-gradient(180deg,#fff 0%,#e4f6ff 50%,#cdeeff 51%,#eaf8ff 100%);box-shadow:0 2px 6px rgba(10,90,150,.15),inset 0 1px 0 #fff}
+.f[aria-pressed="true"]{color:#fff;border-color:#0b86c4;background:linear-gradient(180deg,#8fe0ff 0%,#36b8f2 48%,#129ddf 52%,#3cc0f5 100%);text-shadow:0 1px 1px rgba(0,70,120,.5);box-shadow:0 3px 10px rgba(10,110,180,.4),inset 0 1px 0 rgba(255,255,255,.8)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px;padding-bottom:50px}
+.card{display:flex;flex-direction:column;color:inherit;font-weight:400;border-radius:20px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,.92) 0%,rgba(255,255,255,.7) 50%,rgba(232,247,255,.66) 51%,rgba(245,252,255,.85) 100%);border:1px solid #fff;box-shadow:var(--shadow);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transition:transform .25s,box-shadow .25s}
+a.card:hover{text-decoration:none;color:inherit;transform:translateY(-6px);box-shadow:0 20px 40px rgba(10,90,150,.3),0 0 0 3px rgba(23,162,230,.3)}
+.thumb{aspect-ratio:16/9;position:relative;display:grid;place-items:center;overflow:hidden;margin:10px 10px 0;border-radius:14px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.3)}
+.thumb.neon{background:radial-gradient(ellipse at 50% 75%,rgba(255,45,70,.35),transparent 60%),radial-gradient(ellipse at 20% 15%,rgba(80,120,255,.25),transparent 55%),#0a0612}
+.thumb.neon::after{content:"";position:absolute;inset:0;background:repeating-linear-gradient(to bottom,rgba(255,255,255,.05) 0 1px,transparent 1px 3px)}
+.thumb .t{text-align:center;font-family:Georgia,"Times New Roman",serif;font-weight:900;text-transform:uppercase;color:#FF4559;text-shadow:0 0 6px rgba(255,59,79,.9),0 0 18px rgba(255,59,79,.65),0 0 40px rgba(255,40,60,.4);line-height:.95}
+.thumb .t small{display:block;font-size:12px;letter-spacing:.25em;margin-bottom:6px;color:#f3e6ea;text-shadow:none}
+.thumb .t span{display:block;font-size:34px;letter-spacing:.03em}
+.thumb .ln{width:70%;height:3px;background:#FF3B4F;box-shadow:0 0 10px #FF3B4F;margin:10px auto 0;border-radius:2px}
+.thumb.soon{background:linear-gradient(180deg,#bfeaff,#e9f8ff)}
+.thumb.soon .bubble{width:90px;height:90px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#fff 0 10%,rgba(255,255,255,.25) 14% 58%,rgba(255,255,255,.75) 66%,rgba(120,200,255,.35) 72%,transparent 74%);box-shadow:0 8px 20px rgba(10,90,150,.2)}
+.body{padding:14px 18px 20px;display:flex;flex-direction:column;gap:8px;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tags span{font:700 .72rem var(--font-sans);letter-spacing:.06em;text-transform:uppercase;color:var(--aqua-deep);background:rgba(255,255,255,.8);border:1px solid rgba(23,162,230,.4);border-radius:999px;padding:2px 9px}
+.card h2{font-size:1.3rem;margin:2px 0 0}
+.card p{margin:0;color:var(--ink-soft);font-size:.95rem}
+.go{margin-top:auto;align-self:flex-start;font:700 .88rem var(--font-sans);color:#fff;padding:7px 18px;border-radius:999px;border:1px solid #2f8f22;background:linear-gradient(180deg,#b8f08f 0%,#6ccc3f 48%,#4fb825 52%,#79d64c 100%);box-shadow:0 3px 8px rgba(47,143,34,.35),inset 0 1px 0 rgba(255,255,255,.8);text-shadow:0 1px 1px rgba(20,80,10,.5)}
 </style>
 </head>
 <body>
-<canvas id="bg" aria-hidden="true"></canvas><div class="vig" aria-hidden="true"></div><div class="crt" aria-hidden="true"></div>
-<header>
-  <a class="brand" href="../">IVAROCK</a>
-  <a href="../">&#8592; Volver al inicio</a>
+<header class="site-header">
+  <div class="wrap site-header__inner">
+    <a class="site-header__brand" href="../"><span class="site-header__mark">🌎</span><span class="site-header__title">Bitácora de Ivanov</span></a>
+    <nav class="site-nav">
+      <a href="../">Inicio</a><a href="../blog/">Blog</a><a href="../fotografia/">Fotografía</a><a href="../medicina/">Medicina</a><a href="./">Presentaciones</a><a href="../manuales/">Manuales</a><a href="../acerca-de/">Acerca de</a>
+    </nav>
+  </div>
 </header>
-<main>
-  <section class="hero">
-    <div class="pre">ANESTESIOLOGÍA · INTERACTIVAS</div>
+<main class="wrap" style="max-width:1100px">
+  <section class="aero-hero">
+    <span class="pre">Anestesiología · Interactivas</span>
     <h1>Presentaciones</h1>
-    <div class="bar"></div>
-    <p class="lead">Clases interactivas para recorrer a tu ritmo: simuladores, calculadoras, casos clínicos y autoevaluación. Por el Dr. Ivanov Cruz Correa, postgradista en Anestesiología.</p>
+    <p>Clases interactivas para recorrer a tu ritmo: simuladores, calculadoras, casos clínicos y autoevaluación. Cada presentación tiene su propio estilo visual.</p>
   </section>
-
   <div class="filters" id="filters">
     <button class="f" aria-pressed="true" data-f="all">Todas</button>
     <button class="f" aria-pressed="false" data-f="regional">Anestesia regional</button>
     <button class="f" aria-pressed="false" data-f="obstetricia">Obstetricia</button>
   </div>
-
   <div class="grid" id="grid">
     <a class="card" href="anestesia-epidural/" data-cat="regional obstetricia">
-      <div class="thumb"><div class="t"><small>Presentación</small><span>Anestesia</span><span>Epidural</span><div class="ln"></div></div></div>
+      <div class="thumb neon"><div class="t"><small>Presentación</small><span>Anestesia</span><span>Epidural</span><div class="ln"></div></div></div>
       <div class="body">
-        <div class="tag"><span>Regional</span><span>Obstetricia</span><span>15 módulos</span></div>
+        <div class="tags"><span>Regional</span><span>Obstetricia</span><span>15 módulos</span></div>
         <h2>Anestesia epidural</h2>
         <p>Anatomía, técnica paso a paso, simulador de pérdida de resistencia, fármacos, calculadoras de dosis, anticoagulación ASRA 2025, complicaciones, caso clínico y quiz.</p>
-        <span class="go">Ver presentación &#8594;</span>
+        <span class="go">Ver presentación →</span>
       </div>
     </a>
-    <div class="card" data-cat="all" aria-label="Próximamente">
-      <div class="thumb soon"><div class="t"><small>Próximamente</small><span>Nueva</span><span>clase</span><div class="ln"></div></div></div>
+    <div class="card" data-cat="all">
+      <div class="thumb soon"><div class="bubble"></div></div>
       <div class="body">
-        <div class="tag"><span>En preparación</span></div>
+        <div class="tags"><span>En preparación</span></div>
         <h2>Próximamente</h2>
         <p>Nuevas presentaciones interactivas de anestesiología en camino.</p>
       </div>
     </div>
   </div>
 </main>
-<footer>Material docente. Las dosis son de referencia y deben ajustarse a cada paciente y al protocolo institucional.</footer>
+<footer class="site-footer"><div class="wrap">Material docente. Las dosis son de referencia y deben ajustarse a cada paciente y al protocolo institucional.</div></footer>
 <script>
-(function(){
-"use strict";
-/* filtros */
-var fs=document.querySelectorAll(".f");
-fs.forEach(function(b){b.onclick=function(){fs.forEach(function(x){x.setAttribute("aria-pressed",x===b);});var f=b.dataset.f;
- document.querySelectorAll("#grid .card").forEach(function(c){var cat=c.dataset.cat;c.style.display=(f==="all"||cat==="all"||cat.split(" ").indexOf(f)>-1)?"":"none";});};});
-/* fondo */
-var cv=document.getElementById("bg"),g=cv.getContext("2d"),W,H,D=Math.min(2,window.devicePixelRatio||1),P=[],F=[];
-var RM=window.matchMedia&&matchMedia("(prefers-reduced-motion: reduce)").matches;
-function rs(){W=innerWidth;H=innerHeight;cv.width=W*D;cv.height=H*D;g.setTransform(D,0,0,D,0,0);P=[];F=[];
- for(var i=0;i<Math.min(80,W*H/16000);i++)P.push({x:Math.random()*W,y:Math.random()*H,r:.6+Math.random()*2,vy:-(.08+Math.random()*.3),ph:Math.random()*6.3,w:Math.random()<.55});
- for(var j=0;j<5;j++)F.push({x:Math.random()*W,y:H*(.3+Math.random()*.7),R:(.35+Math.random()*.4)*Math.max(W,H),vx:(Math.random()-.5)*.18,c:j%3===2});}
-function fr(t){var bg=g.createLinearGradient(0,0,0,H);bg.addColorStop(0,"#06040c");bg.addColorStop(1,"#0d0614");g.fillStyle=bg;g.fillRect(0,0,W,H);g.globalCompositeOperation="lighter";
- F.forEach(function(f){f.x+=f.vx;if(f.x<-f.R)f.x=W+f.R;if(f.x>W+f.R)f.x=-f.R;var r=g.createRadialGradient(f.x,f.y,0,f.x,f.y,f.R);r.addColorStop(0,f.c?"rgba(60,120,255,.08)":"rgba(255,45,70,.085)");r.addColorStop(1,"rgba(0,0,0,0)");g.fillStyle=r;g.fillRect(0,0,W,H);});
- P.forEach(function(p){p.y+=p.vy;p.x+=Math.sin(t/2000+p.ph)*.12;if(p.y<-10){p.y=H+10;p.x=Math.random()*W;}var a=Math.max(0,.35+.45*Math.sin(t/900+p.ph)),c=p.w?"255,170,120":"150,220,255",R=p.r*5,q=g.createRadialGradient(p.x,p.y,0,p.x,p.y,R);q.addColorStop(0,"rgba("+c+","+(a*.9).toFixed(3)+")");q.addColorStop(.25,"rgba("+c+","+(a*.25).toFixed(3)+")");q.addColorStop(1,"rgba("+c+",0)");g.fillStyle=q;g.fillRect(p.x-R,p.y-R,R*2,R*2);});
- g.globalCompositeOperation="source-over";if(!RM)requestAnimationFrame(fr);}
-rs();requestAnimationFrame(fr);addEventListener("resize",function(){rs();if(RM)requestAnimationFrame(fr);});
-})();
+(function(){var fs=document.querySelectorAll(".f");fs.forEach(function(b){b.onclick=function(){fs.forEach(function(x){x.setAttribute("aria-pressed",x===b);});var f=b.dataset.f;document.querySelectorAll("#grid .card").forEach(function(c){var cat=c.dataset.cat;c.style.display=(f==="all"||cat==="all"||cat.split(" ").indexOf(f)>-1)?"":"none";});};});})();
 </script>
 </body>
 </html>
