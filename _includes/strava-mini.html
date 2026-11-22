@@ -1,0 +1,10 @@
+{% assign s = site.data.strava %}{% if s and s.recientes %}{% assign a = s.recientes[0] %}
+<a class="contador strava-mini" href="{{ '/deporte/' | relative_url }}" style="display:block;text-decoration:none;color:inherit;margin-top:16px">
+  <span class="contador__titulo">Última actividad</span>
+  <span style="display:block;font-size:2rem;line-height:1.2;margin-top:6px">{{ a.icono }}</span>
+  <strong style="display:block;font:800 1.5rem var(--font-head);color:#fc4c02">{% if a.km > 0 %}{{ a.km }} km{% else %}{{ a.tiempo }}{% endif %}</strong>
+  <span style="display:block;font-size:.82rem">{{ a.tipo }}{% if a.ritmo != "" %} · {{ a.ritmo }}{% endif %}</span>
+  <span class="contador__pie">{{ a.fecha_corta }} · {{ s.anio.km }} km en {{ s.anio_num }}</span>
+  <span style="display:block;margin-top:8px;font-size:.78rem;font-weight:800;color:#fc4c02">Ver mi deporte →</span>
+</a>
+{% endif %}
