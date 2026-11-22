@@ -1,0 +1,160 @@
+---
+layout: default
+title: Calculadoras rápidas
+description: Dosis máxima de anestésicos locales, emulsión lipídica, peso ideal, sangrado permisible, líquidos de mantenimiento y clasificación ASA.
+permalink: /calculadoras/
+tipo: Herramienta
+keywords: calculadora anestésicos locales lidocaína bupivacaína ropivacaína LAST lípidos intralipid peso ideal magro ajustado IMC superficie corporal volemia sangrado permisible Holliday Segar 4-2-1 ASA
+---
+<nav class="x-crumb"><a href="{{ '/medicina/' | relative_url }}">← Medicina</a></nav>
+<section class="x-hero">
+  <span class="pre">Anestesiología · Herramientas</span>
+  <h1>Calculadoras rápidas</h1>
+  <p>Seis cálculos que se hacen a diario en quirófano. Llena los datos del paciente una sola vez y todas las calculadoras se actualizan.</p>
+</section>
+
+<div class="x-wide">
+<div class="x-card" style="margin-bottom:20px">
+  <h2>Datos del paciente</h2>
+  <div class="x-form">
+    <label>Peso real (kg)<input id="peso" type="number" inputmode="decimal" min="0.5" max="350" step="0.1" value="70"></label>
+    <label>Talla (cm)<input id="talla" type="number" inputmode="decimal" min="40" max="230" step="1" value="170"></label>
+    <label>Sexo<select id="sexo"><option value="m">Hombre</option><option value="f">Mujer</option></select></label>
+  </div>
+  <p class="x-note" style="margin:0">Los datos no salen de tu dispositivo.</p>
+</div>
+
+<div class="x-grid">
+
+  <section class="x-card" id="c-peso">
+    <h2>Pesos e índices</h2>
+    <div class="x-out">
+      <div class="x-res x-res--blue"><b id="o-imc">–</b><span>IMC (kg/m²)</span></div>
+      <div class="x-res"><b id="o-pi">–</b><span>Peso ideal (Devine)</span></div>
+      <div class="x-res"><b id="o-pm">–</b><span>Peso magro (Janmahasatian)</span></div>
+      <div class="x-res"><b id="o-pa">–</b><span>Peso ajustado</span></div>
+      <div class="x-res x-res--blue"><b id="o-asc">–</b><span>Superficie corporal (m²)</span></div>
+    </div>
+    <p class="x-note">Peso ajustado = ideal + 0,4 × (real − ideal). Superficie corporal por Mosteller. El peso ideal de Devine no aplica a tallas menores de 152 cm.</p>
+  </section>
+
+  <section class="x-card" id="c-al">
+    <h2>Dosis máxima de anestésicos locales</h2>
+    <div class="x-form">
+      <label>Fármaco<select id="al-f"></select></label>
+      <label>Con adrenalina<select id="al-e"><option value="0">No</option><option value="1">Sí</option></select></label>
+      <label>Concentración<select id="al-c"></select></label>
+      <label>Peso para el cálculo<select id="al-p"><option value="real">Peso real</option><option value="magro">Peso magro</option></select></label>
+    </div>
+    <div class="x-out">
+      <div class="x-res x-res--red"><b id="al-mg">–</b><span>Dosis máxima (mg)</span></div>
+      <div class="x-res x-res--red"><b id="al-ml">–</b><span>Volumen máximo (mL)</span></div>
+      <div class="x-res x-res--blue"><b id="al-ref">–</b><span>Referencia</span></div>
+    </div>
+    <p class="x-note">Dosis únicas orientativas en adultos. La toxicidad depende también del sitio de inyección (intercostal &gt; caudal &gt; epidural &gt; plexo braquial &gt; subcutáneo), de la velocidad y del paciente. En obesidad, calcula con el peso magro. Varios anestésicos locales juntos suman su toxicidad.</p>
+  </section>
+
+  <section class="x-card" id="c-lip">
+    <h2>Emulsión lipídica 20 % (toxicidad por AL)</h2>
+    <div class="x-out">
+      <div class="x-res x-res--red"><b id="lp-b">–</b><span>Bolo en 2–3 min</span></div>
+      <div class="x-res x-res--red"><b id="lp-i">–</b><span>Infusión</span></div>
+      <div class="x-res x-res--blue"><b id="lp-x">–</b><span>Dosis límite (~12 mL/kg)</span></div>
+    </div>
+    <div class="x-warn"><b>Si persiste la inestabilidad:</b> repetir el bolo una o dos veces y duplicar la infusión (0,5 mL/kg/min). Continuar al menos 10 minutos tras recuperar la estabilidad circulatoria.</div>
+    <p class="x-note">Según la lista de verificación de la ASRA (2020). En pacientes ≤ 70 kg se calcula con el peso magro; en &gt; 70 kg se usan dosis fijas. Primero: pedir ayuda, vía aérea, control de convulsiones y RCP si hace falta (adrenalina en dosis bajas, ≤ 1 µg/kg).</p>
+  </section>
+
+  <section class="x-card" id="c-abl">
+    <h2>Volemia y sangrado permisible</h2>
+    <div class="x-form">
+      <label>Paciente<select id="ab-t"><option value="70">Hombre adulto (70 mL/kg)</option><option value="65">Mujer adulta (65 mL/kg)</option><option value="75">Niño (75 mL/kg)</option><option value="80">Lactante (80 mL/kg)</option><option value="85">Recién nacido a término (85 mL/kg)</option><option value="95">Prematuro (95 mL/kg)</option></select></label>
+      <label>Hto inicial (%)<input id="ab-hi" type="number" inputmode="decimal" min="10" max="70" value="40"></label>
+      <label>Hto mínimo aceptable (%)<input id="ab-hf" type="number" inputmode="decimal" min="10" max="60" value="25"></label>
+    </div>
+    <div class="x-out">
+      <div class="x-res x-res--blue"><b id="ab-v">–</b><span>Volemia estimada (mL)</span></div>
+      <div class="x-res x-res--red"><b id="ab-p">–</b><span>Sangrado permisible (mL)</span></div>
+    </div>
+    <p class="x-note">Sangrado permisible = volemia × (Hto inicial − Hto mínimo) / Hto inicial. Es una estimación: la decisión de transfundir es clínica.</p>
+  </section>
+
+  <section class="x-card" id="c-liq">
+    <h2>Líquidos de mantenimiento (4-2-1)</h2>
+    <div class="x-form">
+      <label>Horas de ayuno<input id="lq-h" type="number" inputmode="decimal" min="0" max="48" value="8"></label>
+    </div>
+    <div class="x-out">
+      <div class="x-res"><b id="lq-m">–</b><span>Mantenimiento (mL/h)</span></div>
+      <div class="x-res x-res--blue"><b id="lq-d">–</b><span>Déficit por ayuno (mL)</span></div>
+    </div>
+    <p class="x-note">Holliday-Segar: 4 mL/kg/h los primeros 10 kg, 2 mL/kg/h los siguientes 10 kg y 1 mL/kg/h por cada kg adicional. El déficit clásico (mantenimiento × horas de ayuno) sobrestima las necesidades con los ayunos actuales: individualiza la reposición.</p>
+  </section>
+
+  <section class="x-card" id="c-asa">
+    <h2>Clasificación ASA</h2>
+    <div class="x-chips" id="asa-b"></div>
+    <div id="asa-d" aria-live="polite"></div>
+    <label style="display:flex;gap:8px;align-items:center;font-weight:700;margin-top:8px"><input type="checkbox" id="asa-e"> Cirugía de emergencia (añade “E”)</label>
+    <p class="x-note">Clasificación del estado físico de la ASA, con ejemplos de la actualización de 2020.</p>
+  </section>
+
+</div>
+<p class="x-note" style="text-align:center;margin:-10px 0 30px">Herramienta de apoyo docente. Verifica siempre los resultados con tu criterio clínico, la ficha técnica y el protocolo de tu institución.</p>
+</div>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  var AL={
+    lido:{n:'Lidocaína',c:[0.5,1,2],s:[4.5,300],e:[7,500]},
+    bupi:{n:'Bupivacaína',c:[0.25,0.5,0.75],s:[2.5,175],e:[3,225]},
+    levo:{n:'Levobupivacaína',c:[0.25,0.5,0.75],s:[2,150],e:[2,150]},
+    ropi:{n:'Ropivacaína',c:[0.2,0.5,0.75,1],s:[3,200],e:[3,200]}
+  };
+  var ASA=[
+    ['I','Paciente sano','Sano, no fumador, con consumo de alcohol nulo o mínimo.'],
+    ['II','Enfermedad sistémica leve','Sin limitación funcional. Ej.: fumador, bebedor social, embarazo, obesidad (IMC 30–40), diabetes o hipertensión bien controladas, enfermedad pulmonar leve.'],
+    ['III','Enfermedad sistémica grave','Con limitación funcional. Ej.: diabetes o hipertensión mal controladas, EPOC, obesidad mórbida (IMC ≥ 40), hepatitis activa, dependencia del alcohol, marcapasos, FE moderadamente reducida, ERC en diálisis regular, IAM/ACV/AIT/stent hace más de 3 meses.'],
+    ['IV','Enfermedad grave, amenaza constante para la vida','Ej.: IAM/ACV/AIT/stent hace menos de 3 meses, isquemia cardíaca en curso o valvulopatía grave, FE muy reducida, sepsis, CID, insuficiencia renal sin diálisis regular.'],
+    ['V','Moribundo','No se espera que sobreviva sin la operación. Ej.: aneurisma aórtico roto, trauma masivo, hemorragia intracraneal con efecto de masa, isquemia intestinal con falla multiorgánica.'],
+    ['VI','Muerte encefálica','Donante de órganos.']
+  ];
+  var asaSel=0;
+  var fs=$('al-f');Object.keys(AL).forEach(function(k){var o=document.createElement('option');o.value=k;o.textContent=AL[k].n;fs.appendChild(o)});
+  function fillConc(){var d=AL[fs.value],cs=$('al-c'),prev=cs.value;cs.innerHTML='';d.c.forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=String(c).replace('.',',')+' % ('+(c*10).toString().replace('.',',')+' mg/mL)';cs.appendChild(o)});if(d.c.map(String).indexOf(prev)>-1)cs.value=prev}
+  function f(n,d){if(!isFinite(n))return '–';return n.toLocaleString('es-EC',{maximumFractionDigits:d===undefined?0:d,minimumFractionDigits:0})}
+  ASA.forEach(function(a,i){var b=document.createElement('button');b.className='x-chip';b.textContent='ASA '+a[0];b.onclick=function(){asaSel=i;calc()};$('asa-b').appendChild(b)});
+  function calc(){
+    var P=parseFloat($('peso').value),T=parseFloat($('talla').value),S=$('sexo').value,m=T/100;
+    var imc=P/(m*m);
+    var pi=(S==='m'?50:45.5)+0.91*(T-152.4);
+    var pm=S==='m'?9270*P/(6680+216*imc):9270*P/(8780+244*imc);
+    var pa=P>pi?pi+0.4*(P-pi):P;
+    var asc=Math.sqrt(T*P/3600);
+    $('o-imc').textContent=f(imc,1);$('o-pi').textContent=T>=152?f(pi,1)+' kg':'n/a';$('o-pm').textContent=f(pm,1)+' kg';$('o-pa').textContent=T>=152?f(pa,1)+' kg':'n/a';$('o-asc').textContent=f(asc,2);
+    // anestésicos locales
+    var d=AL[fs.value],epi=$('al-e').value==='1',r=epi?d.e:d.s,c=parseFloat($('al-c').value),pw=$('al-p').value==='magro'?pm:P;
+    var mg=Math.min(r[0]*pw,r[1]);
+    $('al-mg').textContent=f(mg)+' mg';$('al-ml').textContent=f(mg/(c*10),1)+' mL';$('al-ref').textContent=String(r[0]).replace('.',',')+' mg/kg · máx '+r[1]+' mg';
+    // lípidos
+    if(P>70){$('lp-b').textContent='100 mL';$('lp-i').textContent='200–250 mL en 15–20 min';}
+    else{$('lp-b').textContent=f(1.5*pm)+' mL';$('lp-i').textContent=f(0.25*pm,1)+' mL/min ('+f(0.25*pm*60)+' mL/h)';}
+    $('lp-x').textContent=f(12*(P>70?P:pm))+' mL';
+    // sangrado
+    var vse=P*parseFloat($('ab-t').value),hi=parseFloat($('ab-hi').value),hf=parseFloat($('ab-hf').value);
+    $('ab-v').textContent=f(vse)+' mL';$('ab-p').textContent=hf<hi?f(vse*(hi-hf)/hi)+' mL':'–';
+    // líquidos
+    var mant=P<=10?4*P:P<=20?40+2*(P-10):60+(P-20);
+    $('lq-m').textContent=f(mant)+' mL/h';$('lq-d').textContent=f(mant*parseFloat($('lq-h').value))+' mL';
+    // ASA
+    [].forEach.call($('asa-b').children,function(b,i){b.setAttribute('aria-pressed',i===asaSel)});
+    var a=ASA[asaSel],e=$('asa-e').checked&&asaSel<5;
+    $('asa-d').innerHTML='<div class="x-res x-res--blue" style="margin-top:6px"><b>ASA '+a[0]+(e?'E':'')+' · '+a[1]+'</b><span style="font-size:.9rem;color:var(--ink)">'+a[2]+'</span></div>';
+  }
+  fs.onchange=function(){fillConc();calc()};
+  fillConc();
+  ['peso','talla','sexo','al-e','al-c','al-p','ab-t','ab-hi','ab-hf','lq-h','asa-e'].forEach(function(id){$(id).addEventListener('input',calc);$(id).addEventListener('change',calc)});
+  calc();
+})();
+</script>
