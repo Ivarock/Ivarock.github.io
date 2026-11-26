@@ -1,20 +1,20 @@
 # Generado desde Strava. Para actualizar, pídele a Claude: "actualiza Strava".
-actualizado: "22 de noviembre de 2026"
+actualizado: "26 de noviembre de 2026"
 perfil: https://www.strava.com/athletes/29862775
 anio:
-  actividades: 52
-  km: 125.4
-  tiempo: "39 h 25 min"
-  desnivel: 3704
-  km_carrera: 37.6
+  actividades: 53
+  km: 131.4
+  tiempo: "40 h 22 min"
+  desnivel: 3963
+  km_carrera: 43.7
   km_caminata: 87.0
 anio_num: 2026
 mes:
-  actividades: 2
-  km: 11.8
-  tiempo: "2 h 02 min"
-  desnivel: 526
-  km_carrera: 11.8
+  actividades: 3
+  km: 17.8
+  tiempo: "2 h 59 min"
+  desnivel: 785
+  km_carrera: 17.8
   km_caminata: 0.0
 meses:
   - {mes: ene, km: 9.3, horas: 1.6, n: 2, pct: 16}
@@ -27,11 +27,11 @@ meses:
   - {mes: ago, km: 26.2, horas: 4.9, n: 5, pct: 49}
   - {mes: sep, km: 10.9, horas: 7.5, n: 9, pct: 74}
   - {mes: oct, km: 25.3, horas: 4.2, n: 5, pct: 42}
-  - {mes: nov, km: 11.8, horas: 2.0, n: 2, pct: 20}
+  - {mes: nov, km: 17.8, horas: 3.0, n: 3, pct: 30}
 tipos:
   - {tipo: "Caminata", icono: "🚶", n: 24, tiempo: "15 h 54 min"}
   - {tipo: "HIIT", icono: "🔥", n: 8, tiempo: "8 h 17 min"}
-  - {tipo: "Carrera", icono: "🏃", n: 8, tiempo: "6 h 09 min"}
+  - {tipo: "Carrera", icono: "🏃", n: 9, tiempo: "7 h 06 min"}
   - {tipo: "Básquet", icono: "🏀", n: 7, tiempo: "5 h 51 min"}
   - {tipo: "Entrenamiento", icono: "💪", n: 5, tiempo: "3 h 12 min"}
 mejor5k:
@@ -41,6 +41,16 @@ mejor5k:
   ritmo: "7:42 /km"
   km: 5.10
 recientes:
+  - nombre: "Carrera nocturna"
+    tipo: "Carrera"
+    icono: "🏃"
+    fecha: "24 de noviembre"
+    fecha_corta: "24 nov"
+    km: 6.02
+    tiempo: "57:08"
+    ritmo: "9:29 /km"
+    desnivel: 259
+    url: https://www.strava.com/activities/21115500604
   - nombre: "Carrera por la tarde"
     tipo: "Carrera"
     icono: "🏃"
@@ -111,13 +121,3 @@ recientes:
     ritmo: "9:50 /km"
     desnivel: 190
     url: https://www.strava.com/activities/20466989155
-  - nombre: "Caminata vespertina"
-    tipo: "Caminata"
-    icono: "🚶"
-    fecha: "30 de septiembre"
-    fecha_corta: "30 sep"
-    km: 5.08
-    tiempo: "56:56"
-    ritmo: "11:12 /km"
-    desnivel: 221
-    url: https://www.strava.com/activities/20400773768
